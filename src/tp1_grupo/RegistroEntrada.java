@@ -26,7 +26,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblRegistroDeEntrada = new javax.swing.JLabel();
         bntRegistrar = new javax.swing.JButton();
         lblMarca = new javax.swing.JLabel();
         lblPlaca = new javax.swing.JLabel();
@@ -35,7 +35,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Registro de entrada");
+        lblRegistroDeEntrada.setText("Registro de entrada");
 
         bntRegistrar.setText("Registrar");
         bntRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +65,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblRegistroDeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
                         .addComponent(bntRegistrar))
@@ -85,7 +85,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addComponent(lblRegistroDeEntrada)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMarca)
@@ -147,9 +147,9 @@ public class RegistroEntrada extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntRegistrar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblPlaca;
+    private javax.swing.JLabel lblRegistroDeEntrada;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
