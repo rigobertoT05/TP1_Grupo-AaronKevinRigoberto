@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author rigoberto
  */
 public class MenuOpciones extends javax.swing.JFrame {
-static ArrayList<Vehiculo> registarVehiculo = new ArrayList<>();
+static ArrayList<Vehiculo> registrarVehiculo = new ArrayList<>();
 static BufferedReader entrada = new BufferedReader (new InputStreamReader(System.in));
 
     /**
@@ -22,7 +22,7 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
     public MenuOpciones() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
