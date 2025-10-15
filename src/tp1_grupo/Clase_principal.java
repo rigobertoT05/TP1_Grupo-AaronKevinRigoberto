@@ -11,6 +11,8 @@ package tp1_grupo;
 public class Clase_principal {
     
    //esto es una prueba
-  
+    public static void main(String[] args) {
+        
+    }
     
 }
