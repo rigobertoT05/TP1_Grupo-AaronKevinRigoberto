@@ -49,8 +49,8 @@ public class VehiculosParqueo extends javax.swing.JFrame {
         } else {
             for (Vehiculo v : registrarVehiculo) {
                 modeloTabla.addRow(new Object[]{
-                    v.getPlaca(),
                     v.getMarca(),
+                    v.getPlaca(),
                     v.getTipo(),
                     v.getHoraEntrada().format(formatter)
                 });
