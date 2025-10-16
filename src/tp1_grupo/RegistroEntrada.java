@@ -206,9 +206,11 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         
         
         switch (tipo) {
-            case "carro" -> {
+            case "Carro" -> {
+            try { 
                  int numeroDePuertas = Integer.parseInt(txtAtributoExtra.getText());
-                 registrarVehiculo.add(new Carro(marca ,Placa ,horaEntrada ,null ,numeroDePuertas)); }
+                 registrarVehiculo.add(new Carro(marca ,Placa ,horaEntrada ,null ,numeroDePuertas));
+                           } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puetas Invalido");}}
             case "Bicicleta" ->
             { try {
                   int cambios = Integer.parseInt(txtAtributoExtra.getText());
@@ -239,7 +241,6 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMarcaActionPerformed
 
-    
     private void cmdOpcionVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOpcionVehiculosActionPerformed
     String tipo = (String) cmdOpcionVehiculos.getSelectedItem(); 
         switch (tipo) {
