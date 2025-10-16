@@ -20,7 +20,7 @@ public class VehiculosParqueo extends javax.swing.JFrame {
     
     public VehiculosParqueo(ArrayList<Vehiculo>lista) {
         initComponents();
-        this.registrarVehiculo = MenuOpciones.registrarVehiculo;
+        this.registrarVehiculo = lista;
         configurarTabla();
         cargarVehiculos();
     }
