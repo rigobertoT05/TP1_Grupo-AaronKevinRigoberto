@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author rigoberto
  */
 public class MenuOpciones extends javax.swing.JFrame {
-static ArrayList<Vehiculo> registrarVehiculo = new ArrayList<>();
+public static ArrayList<Vehiculo> registrarVehiculo = new ArrayList<>();
 static BufferedReader entrada = new BufferedReader (new InputStreamReader(System.in));
 
     /**
@@ -98,8 +98,10 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
                 formComponentAdded(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_MensajeBienvenida.setText("Parqueo Vehicular Sol Dorado");
+        getContentPane().add(lbl_MensajeBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 30, -1, 28));
 
         btnEntrada.setText("Registrar Entrada");
         btnEntrada.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +109,7 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
                 btnEntradaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 113, 200, -1));
 
         btnRegistraSalidaYCalculaTarifa.setText("Registrar Salida y calcular Tarifa");
         btnRegistraSalidaYCalculaTarifa.addActionListener(new java.awt.event.ActionListener() {
@@ -114,8 +117,15 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
                 btnRegistraSalidaYCalculaTarifaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRegistraSalidaYCalculaTarifa, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 113, -1, -1));
 
         btnListaDeVehiculos.setText("Vehiculos en el parqueo");
+        btnListaDeVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaDeVehiculosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnListaDeVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 158, 202, -1));
 
         btnReporteIngresosGenerados.setText(" Reporte de ingresos generados ");
         btnReporteIngresosGenerados.addActionListener(new java.awt.event.ActionListener() {
@@ -123,49 +133,10 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
                 btnReporteIngresosGeneradosActionPerformed(evt);
             }
         });
+        getContentPane().add(btnReporteIngresosGenerados, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 158, -1, -1));
 
         jLabel1.setText("Seleccione la opcion que desea");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lbl_MensajeBienvenida)
-                        .addGap(125, 125, 125))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnListaDeVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(15, 15, 15)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnReporteIngresosGenerados)
-                            .addComponent(btnRegistraSalidaYCalculaTarifa))
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(lbl_MensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistraSalidaYCalculaTarifa)
-                    .addComponent(btnEntrada))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReporteIngresosGenerados)
-                    .addComponent(btnListaDeVehiculos))
-                .addContainerGap(115, Short.MAX_VALUE))
-        );
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 79, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,6 +157,10 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
       RegistroEntrada registro = new RegistroEntrada();
         registro.setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_btnEntradaActionPerformed
+
+    private void btnListaDeVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaDeVehiculosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListaDeVehiculosActionPerformed
 
     /**
      * @param args the command line arguments
