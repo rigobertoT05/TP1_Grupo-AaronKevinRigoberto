@@ -11,8 +11,9 @@ import java.time.LocalDateTime;
  * @author rigoberto
  */
 public class Bicibleta extends Vehiculo {
-    private int tamaño;
-    public Bicibleta(String marca, String placa, LocalDateTime horaEntrada, LocalDateTime horaSalida) {
+    private int cambios;
+    private String tipo;
+    public Bicibleta(String marca, String placa, LocalDateTime horaEntrada, LocalDateTime horaSalida, int cambios, String tipo) {
         super(marca, placa, horaEntrada, horaSalida);
     }
 
