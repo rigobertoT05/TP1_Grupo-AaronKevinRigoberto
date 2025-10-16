@@ -1,8 +1,17 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package tp1_grupo;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import tp1_grupo.Carro;
+import static tp1_grupo.MenuOpciones.registrarVehiculo;
 
 /**
  *
@@ -26,6 +35,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtAtributoExtra1 = new javax.swing.JTextField();
         lblRegistroDeEntrada = new javax.swing.JLabel();
         bntRegistrar = new javax.swing.JButton();
         lblMarca = new javax.swing.JLabel();
@@ -34,6 +44,16 @@ public class RegistroEntrada extends javax.swing.JFrame {
         txtPlaca = new javax.swing.JTextField();
         cmdOpcionVehiculos = new javax.swing.JComboBox<>();
         lblPlaca1 = new javax.swing.JLabel();
+        lblAtributosVehiculoExtra = new javax.swing.JLabel();
+        txtAtributoExtra = new javax.swing.JTextField();
+        txtAtributoExtra2 = new javax.swing.JTextField();
+        lblAtributosVehiculoExtra1 = new javax.swing.JLabel();
+
+        txtAtributoExtra1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAtributoExtra1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +79,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
             }
         });
 
-        cmdOpcionVehiculos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmdOpcionVehiculos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bicicleta", "Carro", "Motocicleta", "Camion", " " }));
         cmdOpcionVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdOpcionVehiculosActionPerformed(evt);
@@ -69,68 +89,156 @@ public class RegistroEntrada extends javax.swing.JFrame {
         lblPlaca1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPlaca1.setText("Opcion del vehiculo:");
 
+        lblAtributosVehiculoExtra.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        txtAtributoExtra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAtributoExtraActionPerformed(evt);
+            }
+        });
+
+        txtAtributoExtra2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAtributoExtra2ActionPerformed(evt);
+            }
+        });
+
+        lblAtributosVehiculoExtra1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblRegistroDeEntrada)
+                        .addGap(68, 68, 68))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPlaca1)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAtributosVehiculoExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAtributoExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPlaca1)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81)
+                        .addComponent(bntRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(lblRegistroDeEntrada))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(bntRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAtributosVehiculoExtra1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(lblRegistroDeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMarca)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(lblPlaca1)
+                    .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPlaca))
-                .addGap(33, 33, 33)
+                    .addComponent(lblMarca))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPlaca1))
-                .addGap(27, 27, 27)
+                    .addComponent(lblPlaca)
+                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(lblAtributosVehiculoExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtAtributoExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblAtributosVehiculoExtra1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(bntRegistrar)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRegistrarActionPerformed
-        // TODO add your handling code here:
+        String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
+        String marca = txtMarca.getText(); 
+        String Placa = txtPlaca.getText();
+        String extra = txtAtributoExtra.getText();
+        LocalDateTime horaEntrada  = LocalDateTime.now();
+        
+        switch (tipo) {
+            case "carro":
+          try {
+                 int numeroDePuertas = Integer.parseInt(txtAtributoExtra.getText());
+                 registrarVehiculo.add(new Carro(marca ,Placa ,horaEntrada,null ,numeroDePuertas));
+                } catch (NumberFormatException e) {}
+           
+            case "Bicicleta" : int cambios = Integer.parseInt(txtAtributoExtra.getText());
+                               String tipoBici = txtAtributoExtra2.getText();
+                 registrarVehiculo.add(new Bicibleta(marca ,Placa ,horaEntrada,null ,cambios,tipoBici ));
+            case "Motocicleta": 
+                   int cilindrada = Integer.parseInt(txtAtributoExtra.getText());
+                   registrarVehiculo.add(new Moto(marca, Placa, horaEntrada, null,cilindrada));
+            case "Camion" : 
+                int ejes = Integer.parseInt(txtAtributoExtra.getText());
+                registrarVehiculo.add(new Camion(marca, Placa, horaEntrada, null,ejes));
+        }  
     }//GEN-LAST:event_bntRegistrarActionPerformed
 
     private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMarcaActionPerformed
 
+    
     private void cmdOpcionVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOpcionVehiculosActionPerformed
-        // TODO add your handling code here:
+    String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
+    
+        switch (tipo) {
+            case "Carro": lblAtributosVehiculoExtra.setText("Numero de Puertas:");
+                           txtAtributoExtra.getText(); break;
+            case "Bicicleta": lblAtributosVehiculoExtra.setText("Cambios: ");
+                            txtAtributoExtra.getText();
+                              lblAtributosVehiculoExtra1.setText("Tipo (bmx/mountainBike): ");
+                            txtAtributoExtra2.getText();
+                              break;
+            case "Motocicleta": lblAtributosVehiculoExtra.setText("tiene Sidecar (SI/NO):");
+                            txtAtributoExtra.getText();
+                            lblAtributosVehiculoExtra.setText("Cilindraje: ");
+                            txtAtributoExtra2.getText(); break;
+            case "Camion": lblAtributosVehiculoExtra.setText("numero de ejes:");
+                            txtAtributoExtra.getText(); break;
+        }
+        
     }//GEN-LAST:event_cmdOpcionVehiculosActionPerformed
+
+    private void txtAtributoExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtributoExtraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAtributoExtraActionPerformed
+
+    private void txtAtributoExtra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtributoExtra1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAtributoExtra1ActionPerformed
+
+    private void txtAtributoExtra2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtributoExtra2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAtributoExtra2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,10 +278,15 @@ public class RegistroEntrada extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntRegistrar;
     private javax.swing.JComboBox<String> cmdOpcionVehiculos;
+    private javax.swing.JLabel lblAtributosVehiculoExtra;
+    private javax.swing.JLabel lblAtributosVehiculoExtra1;
     private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblPlaca;
     private javax.swing.JLabel lblPlaca1;
     private javax.swing.JLabel lblRegistroDeEntrada;
+    private javax.swing.JTextField txtAtributoExtra;
+    private javax.swing.JTextField txtAtributoExtra1;
+    private javax.swing.JTextField txtAtributoExtra2;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
