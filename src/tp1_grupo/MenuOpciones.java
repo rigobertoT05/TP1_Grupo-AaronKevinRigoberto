@@ -97,10 +97,8 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
                 formComponentAdded(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_MensajeBienvenida.setText("Parqueo Vehicular Sol Dorado");
-        getContentPane().add(lbl_MensajeBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 30, -1, 28));
 
         btnEntrada.setText("Registrar Entrada");
         btnEntrada.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +106,6 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
                 btnEntradaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 113, 200, -1));
 
         btnRegistraSalidaYCalculaTarifa.setText("Registrar Salida y calcular Tarifa");
         btnRegistraSalidaYCalculaTarifa.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +113,6 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
                 btnRegistraSalidaYCalculaTarifaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistraSalidaYCalculaTarifa, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 113, -1, -1));
 
         btnListaDeVehiculos.setText("Vehiculos en el parqueo");
         btnListaDeVehiculos.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +120,6 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
                 btnListaDeVehiculosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnListaDeVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 158, 202, -1));
 
         btnReporteIngresosGenerados.setText(" Reporte de ingresos generados ");
         btnReporteIngresosGenerados.addActionListener(new java.awt.event.ActionListener() {
@@ -132,10 +127,48 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
                 btnReporteIngresosGeneradosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnReporteIngresosGenerados, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 158, -1, -1));
 
         jLabel1.setText("Seleccione la opcion que desea");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 79, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(lbl_MensajeBienvenida))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btnRegistraSalidaYCalculaTarifa))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(btnListaDeVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btnReporteIngresosGenerados))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lbl_MensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEntrada)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(btnRegistraSalidaYCalculaTarifa)))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnListaDeVehiculos)
+                    .addComponent(btnReporteIngresosGenerados)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
