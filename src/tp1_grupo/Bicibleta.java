@@ -28,8 +28,4 @@ public class Bicibleta extends Vehiculo {
     return "Bicicleta - Marca: " + getMarca() +
            ", Placa: " + getPlaca() + ", Cambios: " + cambios + ", Tipo: " + tipo;}
 
-    @Override
-    public String obtenerTipo() {
-        return null;
-    }
 }

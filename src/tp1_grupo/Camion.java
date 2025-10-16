@@ -25,8 +25,4 @@ public class Camion extends Vehiculo {
            ", Placa: " + getPlaca() + ", Ejes: " + ejes;
 }
 
-    @Override
-    public String obtenerTipo() {
-       return null;
-    }
 }

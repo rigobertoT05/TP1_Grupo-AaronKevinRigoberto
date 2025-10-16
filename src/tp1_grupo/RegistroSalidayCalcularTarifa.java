@@ -58,6 +58,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         lblTituloTarifa = new javax.swing.JLabel();
         btnConfirmarSalida = new javax.swing.JButton();
@@ -70,6 +71,8 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         lblTitulo1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnRegresar = new javax.swing.JButton();
+        cbxHoraSalida = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -96,6 +99,9 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         lblTituloTarifa.setForeground(java.awt.Color.white);
         lblTituloTarifa.setText("Tarifa");
 
+        btnConfirmarSalida.setBackground(new java.awt.Color(255, 255, 255));
+        btnConfirmarSalida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnConfirmarSalida.setForeground(new java.awt.Color(0, 0, 0));
         btnConfirmarSalida.setText("Confirmar salida");
         btnConfirmarSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +120,9 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,12 +189,21 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             .addGap(0, 185, Short.MAX_VALUE)
         );
 
+        btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
+
+        cbxHoraSalida.setText("jCheckBox1");
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Hora Salida: ");
+        jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,9 +225,13 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                         .addGap(255, 255, 255)
                         .addComponent(lblTitulo1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(293, 293, 293)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(cbxHoraSalida)
+                        .addGap(49, 49, 49)
                         .addComponent(lblTituloTarifa)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,10 +241,13 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTituloTarifa)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTituloTarifa)
+                    .addComponent(cbxHoraSalida)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmarSalida)
                     .addComponent(btnRegresar))
@@ -244,7 +269,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       
+    
     String placaBuscada = txtPlaca.getText().trim().toUpperCase();
     
     // Validar que se haya ingresado una placa
@@ -260,10 +285,10 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     // Limpiar la tabla antes de buscar
     modeloTabla.setRowCount(0);
     vehiculoEncontrado = null;
-    
-    // Buscar el vehículo en el ArrayList
     boolean encontrado = false;
+    // Buscar el vehículo en el ArrayList
         System.out.println("Vehicuos Diponibles para salida" + MenuOpciones.registrarVehiculo.size());
+        
     for (Vehiculo v : MenuOpciones.registrarVehiculo) {
         if (v.getPlaca().equalsIgnoreCase(placaBuscada)) {
             vehiculoEncontrado = v;
@@ -309,7 +334,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         return;
     }
-    
     // Calcular tarifa
     vehiculoEncontrado.setHoraSalida(java.time.LocalDateTime.now());
     double tarifa = vehiculoEncontrado.calcularTarifa();
@@ -388,12 +412,15 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnConfirmarSalida;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JCheckBox cbxHoraSalida;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

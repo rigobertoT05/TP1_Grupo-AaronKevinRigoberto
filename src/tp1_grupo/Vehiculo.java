@@ -33,9 +33,6 @@ abstract class Vehiculo {
         return (minutos + 59) / 60;
     }
     
-    public abstract String obtenerTipo();
-    
-    
     
     public String getMarca() {
         return marca;

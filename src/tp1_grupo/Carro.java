@@ -29,11 +29,6 @@ public class Carro extends Vehiculo {
            ", Placa: " + getPlaca() + ", Numero de Puertas: " + numeroDePuertas;
 }
 
-    @Override
-    public String obtenerTipo() {
-    
-         return null;
-    
-    }
+
 }  
 
