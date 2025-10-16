@@ -19,12 +19,15 @@ import static tp1_grupo.MenuOpciones.registrarVehiculo;
  * @author kevin
  */
 public class RegistroEntrada extends javax.swing.JFrame {
-
+public static LocalDateTime horaEntrada = LocalDateTime.now();
     /**
      * Creates new form RegistroEntrada
      */
     public RegistroEntrada() {
         initComponents();
+    LocalDateTime horaEntrada = LocalDateTime.now();
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    txtHoraEntrada.setText(horaEntrada.format(formato));
     }
 
     /**
@@ -200,14 +203,14 @@ public class RegistroEntrada extends javax.swing.JFrame {
         String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
         String marca = txtMarca.getText(); 
         String Placa = txtPlaca.getText();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/ HH:mm");
-        LocalDateTime horaEntrada = LocalDateTime.parse(txtHoraEntrada.getText(), formato);
+        
+        
         switch (tipo) {
             case "carro" -> {
-            try { txtAtributoExtra.getText();
+            try { 
                  int numeroDePuertas = Integer.parseInt(txtAtributoExtra.getText());
-                 registrarVehiculo.add(new Carro(marca ,Placa ,horaEntrada,null ,numeroDePuertas));
-                           } catch (NumberFormatException e) {}}
+                 registrarVehiculo.add(new Carro(marca ,Placa ,horaEntrada ,null ,numeroDePuertas));
+                           } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puetas Invalido");}}
             case "Bicicleta" ->
             { try {
                   int cambios = Integer.parseInt(txtAtributoExtra.getText());
@@ -221,6 +224,7 @@ public class RegistroEntrada extends javax.swing.JFrame {
             case "Camion" -> { 
                 int ejes = Integer.parseInt(txtAtributoExtra.getText());
                 registrarVehiculo.add(new Camion(marca, Placa, horaEntrada, null,ejes));}}
+          JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
     }//GEN-LAST:event_bntRegistrarActionPerformed
 
     private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
@@ -230,26 +234,28 @@ public class RegistroEntrada extends javax.swing.JFrame {
     
     private void cmdOpcionVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOpcionVehiculosActionPerformed
     String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
+   
     
-        switch (tipo) {
+        switch (tipo.toLowerCase()) {
             case "Carro": lblAtributosVehiculoExtra.setText("Numero de Puertas:");
                           txtAtributoExtra.getText();
+                          lblAtributosVehiculoExtra1.setText(""); break;
             case "Bicicleta":lblAtributosVehiculoExtra.setText("Cambios: ");
                             txtAtributoExtra.getText();
                               lblAtributosVehiculoExtra1.setText("Tipo (bmx/mountainBike): ");
-                            txtAtributoExtra2.getText();
-                              break;
-            case "Motocicleta": 
-                do {
+                            txtAtributoExtra2.getText();break;
+            case "Motocicleta":
                     lblAtributosVehiculoExtra.setText("tiene Sidecar (SI/NO):");
                             txtAtributoExtra.getText();
-                } while ((txtAtributoExtra2.getText().equalsIgnoreCase("SI")) && (txtAtributoExtra2.getText().equalsIgnoreCase("NO")));
                             lblAtributosVehiculoExtra.setText("Cilindraje: ");
                             txtAtributoExtra2.getText(); break;
             case "Camion": lblAtributosVehiculoExtra.setText("numero de ejes:");
-                            txtAtributoExtra.getText(); break;
-        }
-        JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
+                            txtAtributoExtra.getText(); 
+                            lblAtributosVehiculoExtra1.setText(""); break;
+            default: lblAtributosVehiculoExtra.setText("");
+                     lblAtributosVehiculoExtra1.setText("");        }
+        
+      
     }//GEN-LAST:event_cmdOpcionVehiculosActionPerformed
 
     private void txtAtributoExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtributoExtraActionPerformed
