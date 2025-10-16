@@ -225,6 +225,10 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                 int ejes = Integer.parseInt(txtAtributoExtra.getText());
                 registrarVehiculo.add(new Camion(marca, Placa, horaEntrada, null,ejes));}}
           JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
+          
+          MenuOpciones menu = new MenuOpciones();
+          menu.setVisible(true);
+          this.dispose();
     }//GEN-LAST:event_bntRegistrarActionPerformed
 
     private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
@@ -236,11 +240,13 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
     String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
    
     
-        switch (tipo.toLowerCase()) {
+        switch (tipo) {
             case "Carro": lblAtributosVehiculoExtra.setText("Numero de Puertas:");
                           txtAtributoExtra.getText();
                           lblAtributosVehiculoExtra1.setText(""); break;
             case "Bicicleta":lblAtributosVehiculoExtra.setText("Cambios: ");
+                            txtPlaca.setVisible(false);
+                            lblPlaca.setVisible(false);
                             txtAtributoExtra.getText();
                               lblAtributosVehiculoExtra1.setText("Tipo (bmx/mountainBike): ");
                             txtAtributoExtra2.getText();break;
