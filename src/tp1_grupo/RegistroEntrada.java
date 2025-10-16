@@ -20,7 +20,8 @@ import static tp1_grupo.MenuOpciones.registrarVehiculo;
  */
 public class RegistroEntrada extends javax.swing.JFrame {
 public static LocalDateTime horaEntrada = LocalDateTime.now();
-    /**
+
+    /** 
      * Creates new form RegistroEntrada
      */
     public RegistroEntrada() {
@@ -30,6 +31,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
     txtHoraEntrada.setText(horaEntrada.format(formato));
     txtAtributoExtra1.setVisible(false);
     txtAtributoExtra2.setVisible(false);
+    
     }
 
     /**
@@ -45,8 +47,8 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         btnRegistrar = new javax.swing.JButton();
         lblMarca = new javax.swing.JLabel();
         lblPlaca = new javax.swing.JLabel();
-        txtMarca = new javax.swing.JTextField();
         txtPlaca = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
         cmdOpcionVehiculos = new javax.swing.JComboBox<>();
         lblPlaca1 = new javax.swing.JLabel();
         lblAtributosVehiculoExtra1 = new javax.swing.JLabel();
@@ -75,9 +77,9 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         lblPlaca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPlaca.setText("Placa:");
 
-        txtMarca.addActionListener(new java.awt.event.ActionListener() {
+        txtPlaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMarcaActionPerformed(evt);
+                txtPlacaActionPerformed(evt);
             }
         });
 
@@ -154,11 +156,11 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(lblPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(txtMarca))
+                            .addComponent(txtPlaca))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(lblMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblPlaca1)
                         .addGap(18, 18, 18)
@@ -177,11 +179,11 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMarca, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlaca)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHoraEntrada)
@@ -206,9 +208,10 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
-        String marca = txtMarca.getText(); 
-        String Placa = txtPlaca.getText().trim().toLowerCase();
-        if (txtMarca.getText().isBlank() || txtPlaca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.isBlank() ) {
+        String tieneSidecar;
+        String marca = txtPlaca.getText(); 
+        String Placa = txtMarca.getText().trim().toLowerCase();
+        if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.isBlank() ) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos");
             return;
         }
@@ -219,10 +222,14 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
             case "Bicicleta" -> { try { int cambios = Integer.parseInt(txtAtributoExtra1.getText());
                    String tipoBici = txtAtributoExtra2.getText();
                  MenuOpciones.registrarVehiculo.add(new Bicibleta(marca ,Placa ,tipo ,horaEntrada,null ,cambios,tipoBici )); }catch (NumberFormatException e) {}}
-            case "Motocicleta" -> { String TieneSidecar = txtAtributoExtra1.getText();
-                Boolean sidecar = TieneSidecar.equalsIgnoreCase("Si")? true : false;
-                   int cilindrada = Integer.parseInt(txtAtributoExtra1.getText());
-                 MenuOpciones.registrarVehiculo.add(new Moto(marca, Placa,tipo, horaEntrada, null,cilindrada, sidecar)); }
+            case "Motocicleta" -> {
+                       int cilindrada = Integer.parseInt(txtAtributoExtra2.getText());
+                        do {
+                            tieneSidecar = txtAtributoExtra1.getText();
+                } while (!tieneSidecar.equalsIgnoreCase("Si") && !tieneSidecar.equalsIgnoreCase("No"));
+                        Boolean sidecar = tieneSidecar.equalsIgnoreCase("Si")? true : false;    
+                        MenuOpciones.registrarVehiculo.add(new Moto(marca, Placa,tipo, horaEntrada, null,cilindrada, sidecar));
+                 }
             case "Camion" -> { int ejes = Integer.parseInt(txtAtributoExtra1.getText());
                 MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); } }
             
@@ -234,8 +241,8 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
-    }//GEN-LAST:event_txtMarcaActionPerformed
+    private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
+    }//GEN-LAST:event_txtPlacaActionPerformed
 
     private void cmdOpcionVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOpcionVehiculosActionPerformed
     String tipo = (String) cmdOpcionVehiculos.getSelectedItem(); 
