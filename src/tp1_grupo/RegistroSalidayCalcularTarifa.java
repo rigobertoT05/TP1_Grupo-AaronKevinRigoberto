@@ -8,15 +8,43 @@ package tp1_grupo;
  *
  * @author kevin
  */
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroSalidayCalcularTarifa
      */
+    private DefaultTableModel modeloTabla;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    private Vehiculo vehiculoEncontrado = null;
+
     public RegistroSalidayCalcularTarifa() {
         initComponents();
+        configurarTabla();
     }
 
+    private void configurarTabla() {
+        // Crear modelo de tabla con columnas no editables
+        modeloTabla = new DefaultTableModel(
+            new Object[]{"Placa", "Vehiculo", "Hora Entrada"}, 0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        
+        tblMostrarDatos.setModel(modeloTabla);
+        
+        // Ajustar ancho de columnas
+        tblMostrarDatos.getColumnModel().getColumn(0).setPreferredWidth(80);
+        tblMostrarDatos.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblMostrarDatos.getColumnModel().getColumn(2).setPreferredWidth(150);
+      
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,14 +59,14 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
-        btnBuscar1 = new javax.swing.JButton();
+        lblTituloTarifa = new javax.swing.JLabel();
+        btnConfirmarSalida = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtPlaca = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblMostrarDatos = new javax.swing.JTable();
         lblTitulo1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -63,18 +91,20 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
 
         jPanel1.setBackground(java.awt.Color.darkGray);
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTitulo.setForeground(java.awt.Color.white);
-        lblTitulo.setText("Tarifa");
+        lblTituloTarifa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloTarifa.setForeground(java.awt.Color.white);
+        lblTituloTarifa.setText("Tarifa");
 
-        btnBuscar1.setText("Confirmar salida");
-        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
+        btnConfirmarSalida.setText("Confirmar salida");
+        btnConfirmarSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar1ActionPerformed(evt);
+                btnConfirmarSalidaActionPerformed(evt);
             }
         });
 
-        jLabel1.setForeground(java.awt.Color.white);
+        jPanel2.setBackground(java.awt.Color.gray);
+
+        jLabel1.setForeground(java.awt.Color.black);
         jLabel1.setText("Introduzca el N° de placa:");
 
         txtPlaca.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +120,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblMostrarDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -101,7 +131,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 "Placa", "Vehiculo", "Hora de entrada"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblMostrarDatos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -136,6 +166,8 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         lblTitulo1.setForeground(java.awt.Color.white);
         lblTitulo1.setText("Registro de salida");
 
+        jPanel3.setBackground(java.awt.Color.gray);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -155,7 +187,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(277, 277, 277)
-                        .addComponent(btnBuscar1))
+                        .addComponent(btnConfirmarSalida))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +198,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                         .addComponent(lblTitulo1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(293, 293, 293)
-                        .addComponent(lblTitulo)))
+                        .addComponent(lblTituloTarifa)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -177,11 +209,11 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTitulo)
+                .addComponent(lblTituloTarifa)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(btnBuscar1)
+                .addComponent(btnConfirmarSalida)
                 .addGap(25, 25, 25))
         );
 
@@ -200,16 +232,103 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+       
+    String placaBuscada = txtPlaca.getText().trim().toUpperCase();
+    
+    // Validar que se haya ingresado una placa
+    if (placaBuscada.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+                "Por favor ingrese una placa para buscar", 
+                "Campo vacío", 
+                JOptionPane.WARNING_MESSAGE);
+        txtPlaca.requestFocus();
+        return;
+    }
+    
+    // Limpiar la tabla antes de buscar
+    modeloTabla.setRowCount(0);
+    vehiculoEncontrado = null;
+    
+    // Buscar el vehículo en el ArrayList
+    boolean encontrado = false;
+    for (Vehiculo v : MenuOpciones.registrarVehiculo) {
+        if (v.getPlaca().equalsIgnoreCase(placaBuscada)) {
+            vehiculoEncontrado = v;
+            encontrado = true;
+            
+            // Agregar el vehículo a la tabla
+            Object[] fila = new Object[3];
+            fila[0] = v.getPlaca();
+            fila[1] = v.getMarca();
+            fila[2] = v.getHoraEntrada().format(formatter);
+            
+            modeloTabla.addRow(fila);
+            break;
+        }
+    }
+    // Si no se encontró el vehículo
+    if (!encontrado) {
+        JOptionPane.showMessageDialog(this, 
+                "No se encontró ningún vehículo con la placa: " + placaBuscada + "\n" +
+                "Verifique que el vehículo esté registrado en el parqueo.", 
+                "Vehículo no encontrado", 
+                JOptionPane.ERROR_MESSAGE);
+    } else {
+        // Mostrar mensaje de éxito
+        JOptionPane.showMessageDialog(this, 
+                "Vehículo encontrado", 
+                "Éxito", 
+                JOptionPane.INFORMATION_MESSAGE);
+    }//fin de la    
+        
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPlacaActionPerformed
 
-    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscar1ActionPerformed
+    private void btnConfirmarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarSalidaActionPerformed
+       if (vehiculoEncontrado == null) {
+        JOptionPane.showMessageDialog(this, 
+                "Primero debe buscar un vehículo", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // Calcular tarifa
+    vehiculoEncontrado.setHoraSalida(java.time.LocalDateTime.now());
+    double tarifa = vehiculoEncontrado.calcularTarifa();
+    
+    // Confirmar la salida
+    int respuesta = JOptionPane.showConfirmDialog(this, 
+            "¿Confirmar salida del vehículo?\n\n" +
+            "Placa: " + vehiculoEncontrado.getPlaca() + "\n" +
+            "Tarifa a pagar: ₡" + String.format("%.2f", tarifa), 
+            "Confirmar Salida", 
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE);
+    
+    if (respuesta == JOptionPane.YES_OPTION) {
+        // Eliminar el vehículo del ArrayList
+        MenuOpciones.registrarVehiculo.remove(vehiculoEncontrado);
+        
+        // Mostrar mensaje de éxito
+        JOptionPane.showMessageDialog(this, 
+                "Salida registrada exitosamente\n\n" +
+                "Placa: " + vehiculoEncontrado.getPlaca() + "\n" +
+                "Total pagado: ₡" + String.format("%.2f", tarifa), 
+                "Salida Exitosa", 
+                JOptionPane.INFORMATION_MESSAGE);
+        
+        // Limpiar formulario
+        txtPlaca.setText("");
+        modeloTabla.setRowCount(0);
+        vehiculoEncontrado = null;
+        txtPlaca.requestFocus();
+    }
+    }//GEN-LAST:event_btnConfirmarSalidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,7 +367,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnBuscar1;
+    private javax.swing.JButton btnConfirmarSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -258,9 +377,9 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JLabel lblTituloTarifa;
+    private javax.swing.JTable tblMostrarDatos;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 }
