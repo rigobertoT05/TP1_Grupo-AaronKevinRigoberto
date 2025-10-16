@@ -280,7 +280,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             txtPlaca.requestFocus();
             return;
         }
-
         // Limpiar la tabla antes de buscar
         modeloTabla.setRowCount(0);
         vehiculoEncontrado = null;
@@ -371,7 +370,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             vehiculoEncontrado = null;
             txtPlaca.requestFocus();
         }
-
     } catch (DateTimeParseException e) {
         JOptionPane.showMessageDialog(this,
             "Formato de hora inválido. Use HH:mm",

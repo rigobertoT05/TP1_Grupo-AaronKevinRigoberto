@@ -209,8 +209,8 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
         String tieneSidecar;
-        String marca = txtPlaca.getText(); 
-        String Placa = txtMarca.getText().trim().toLowerCase();
+        String marca = txtMarca.getText(); 
+        String Placa = txtPlaca.getText().trim().toLowerCase();
         if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.isBlank() ) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos");
             return;
