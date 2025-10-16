@@ -11,11 +11,10 @@ import java.time.LocalDateTime;
  * @author rigoberto
  */
 public class Camion extends Vehiculo {
-    private int tamaño,peso;
-    public Camion(String marca, String placa, LocalDateTime horaEntrada,LocalDateTime horaSalida) {
+    private int ejes;
+    public Camion(String marca, String placa, LocalDateTime horaEntrada,LocalDateTime horaSalida, int ejes) {
         super(marca, placa, horaEntrada, horaSalida);
-        this.tamaño = tamaño;
-        this.peso = peso;
+        this.ejes = ejes;
     }
 
     @Override

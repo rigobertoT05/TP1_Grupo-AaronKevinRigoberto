@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
  * @author rigoberto
  */
 public class Carro extends Vehiculo {
-     private int numeroDePuertas;
+     public int numeroDePuertas; 
 
-    public Carro(String marca, String placa, LocalDateTime horaEntrada, LocalDateTime horaSalida) {
+    public Carro(String marca, String placa, LocalDateTime horaEntrada, LocalDateTime horaSalida, int numeroDePuertas) {
         super(marca, placa, horaEntrada, horaSalida);
         this.numeroDePuertas = numeroDePuertas;
     }

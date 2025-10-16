@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class Moto extends Vehiculo {
     private boolean tieneSidecar;
     private int cilindraje;
-    public Moto(String marca, String placa, LocalDateTime horaEntrada, LocalDateTime horaSalida) {
+    public Moto(String marca, String placa, LocalDateTime horaEntrada, LocalDateTime horaSalida, int cilindraje,boolean tieneSidecar) {
         super(marca, placa, horaEntrada, horaSalida);
         this.tieneSidecar = tieneSidecar;
         this.cilindraje = cilindraje;
