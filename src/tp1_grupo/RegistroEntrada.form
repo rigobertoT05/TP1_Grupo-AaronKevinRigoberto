@@ -56,12 +56,7 @@
                               <Component id="lblAtributosVehiculoExtra" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtAtributoExtra" alignment="0" pref="161" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="lblAtributosVehiculoExtra1" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblPlaca1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cmdOpcionVehiculos" min="-2" pref="130" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblAtributosVehiculoExtra2" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblPlaca" min="-2" pref="60" max="-2" attributes="0"/>
@@ -73,6 +68,11 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="txtPlaca" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblPlaca1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="cmdOpcionVehiculos" min="-2" pref="151" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -112,7 +112,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtAtributoExtra" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-              <Component id="lblAtributosVehiculoExtra1" min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="lblAtributosVehiculoExtra2" min="-2" pref="28" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtAtributoExtra2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
@@ -165,12 +165,13 @@
     <Component class="javax.swing.JComboBox" name="cmdOpcionVehiculos">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value="Bicicleta"/>
-            <StringItem index="1" value="Carro"/>
-            <StringItem index="2" value="Motocicleta"/>
-            <StringItem index="3" value="Camion"/>
-            <StringItem index="4" value=" "/>
+          <StringArray count="6">
+            <StringItem index="0" value="Seleccione el tipo...."/>
+            <StringItem index="1" value="Bicicleta"/>
+            <StringItem index="2" value="Carro"/>
+            <StringItem index="3" value="Motocicleta"/>
+            <StringItem index="4" value="Camion"/>
+            <StringItem index="5" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -206,7 +207,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAtributoExtra2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblAtributosVehiculoExtra1">
+    <Component class="javax.swing.JLabel" name="lblAtributosVehiculoExtra2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
