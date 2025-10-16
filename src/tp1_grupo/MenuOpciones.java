@@ -179,12 +179,12 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
     }//GEN-LAST:event_btnReporteIngresosGeneradosActionPerformed
 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
-        RegistroEntrada registro = new RegistroEntrada();
-        registro.setVisible(true);// TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_formComponentAdded
 
     private void btnEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradaActionPerformed
-        // TODO add your handling code here:
+      RegistroEntrada registro = new RegistroEntrada();
+        registro.setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_btnEntradaActionPerformed
 
     /**
