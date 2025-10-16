@@ -8,12 +8,17 @@ package tp1_grupo;
  *
  * @author kevin
  */
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import tp1_grupo.MenuOpciones;
 
 public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
-
     /**
      * Creates new form RegistroSalidayCalcularTarifa
      */
@@ -24,8 +29,14 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     public RegistroSalidayCalcularTarifa() {
         initComponents();
         configurarTabla();
+        configurarComboBox();
     }
-
+    private void configurarComboBox() {
+        cmbHoraSalida.removeAllItems();
+        for (int i = 0; i < 24; i++) {
+            cmbHoraSalida.addItem(String.format("%02d:00", i)); 
+        }
+    }
     private void configurarTabla() {
         // Crear modelo de tabla con columnas no editables
         modeloTabla = new DefaultTableModel(
@@ -59,8 +70,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jPanel1 = new javax.swing.JPanel();
-        lblTituloTarifa = new javax.swing.JLabel();
+        JPanePrincipal = new javax.swing.JPanel();
         btnConfirmarSalida = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -69,10 +79,9 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMostrarDatos = new javax.swing.JTable();
         lblTitulo1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         btnRegresar = new javax.swing.JButton();
-        cbxHoraSalida = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
+        cmbHoraSalida = new javax.swing.JComboBox<>();
 
         jMenu1.setText("jMenu1");
 
@@ -93,11 +102,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(java.awt.Color.darkGray);
-
-        lblTituloTarifa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTituloTarifa.setForeground(java.awt.Color.white);
-        lblTituloTarifa.setText("Tarifa");
+        JPanePrincipal.setBackground(java.awt.Color.darkGray);
 
         btnConfirmarSalida.setBackground(new java.awt.Color(255, 255, 255));
         btnConfirmarSalida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -176,19 +181,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         lblTitulo1.setForeground(java.awt.Color.white);
         lblTitulo1.setText("Registro de salida");
 
-        jPanel3.setBackground(java.awt.Color.gray);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 185, Short.MAX_VALUE)
-        );
-
         btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
@@ -199,127 +191,132 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             }
         });
 
-        cbxHoraSalida.setText("jCheckBox1");
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Hora Salida: ");
         jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        cmbHoraSalida.setBackground(new java.awt.Color(255, 255, 255));
+        cmbHoraSalida.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cmbHoraSalida.setForeground(new java.awt.Color(0, 0, 0));
+        cmbHoraSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbHoraSalidaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JPanePrincipalLayout = new javax.swing.GroupLayout(JPanePrincipal);
+        JPanePrincipal.setLayout(JPanePrincipalLayout);
+        JPanePrincipalLayout.setHorizontalGroup(
+            JPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanePrincipalLayout.createSequentialGroup()
+                .addGroup(JPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPanePrincipalLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnConfirmarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(145, 145, 145)
-                                    .addComponent(btnRegresar))
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPanePrincipalLayout.createSequentialGroup()
                         .addGap(255, 255, 255)
                         .addComponent(lblTitulo1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(JPanePrincipalLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(cbxHoraSalida)
-                        .addGap(49, 49, 49)
-                        .addComponent(lblTituloTarifa)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPanePrincipalLayout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(btnConfirmarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnRegresar)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        JPanePrincipalLayout.setVerticalGroup(
+            JPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanePrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitulo1)
                 .addGap(32, 32, 32)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTituloTarifa)
-                    .addComponent(cbxHoraSalida)
-                    .addComponent(jLabel2))
+                .addGroup(JPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cmbHoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(JPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmarSalida)
                     .addComponent(btnRegresar))
-                .addGap(25, 25, 25))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JPanePrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JPanePrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        MenuOpciones menu = new MenuOpciones();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-    
-    String placaBuscada = txtPlaca.getText().trim().toUpperCase();
-    
-    // Validar que se haya ingresado una placa
-    if (placaBuscada.isEmpty()) {
-        JOptionPane.showMessageDialog(this, 
-                "Por favor ingrese una placa para buscar", 
-                "Campo vacío", 
+        String placaBuscada = txtPlaca.getText().trim().toUpperCase();
+
+        // Validar que se haya ingresado una placa
+        if (placaBuscada.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor ingrese una placa para buscar",
+                "Campo vacío",
                 JOptionPane.WARNING_MESSAGE);
-        txtPlaca.requestFocus();
-        return;
-    }
-    
-    // Limpiar la tabla antes de buscar
-    modeloTabla.setRowCount(0);
-    vehiculoEncontrado = null;
-    boolean encontrado = false;
-    // Buscar el vehículo en el ArrayList
-        System.out.println("Vehicuos Diponibles para salida" + MenuOpciones.registrarVehiculo.size());
-        
-    for (Vehiculo v : MenuOpciones.registrarVehiculo) {
-        if (v.getPlaca().equalsIgnoreCase(placaBuscada)) {
-            vehiculoEncontrado = v;
-            encontrado = true;
-            
-            // Agregar el vehículo a la tabla
-            Object[] fila = new Object[3];
-            fila[0] = v.getPlaca();
-            fila[1] = v.getMarca();
-            fila[2] = v.getHoraEntrada().format(formatter);
-            
-            modeloTabla.addRow(fila);
-            break;
+            txtPlaca.requestFocus();
+            return;
         }
-    }
-    // Si no se encontró el vehículo
-    if (!encontrado) {
-        JOptionPane.showMessageDialog(this, 
+
+        // Limpiar la tabla antes de buscar
+        modeloTabla.setRowCount(0);
+        vehiculoEncontrado = null;
+        boolean encontrado = false;
+        // Buscar el vehículo en el ArrayList
+        System.out.println("Vehicuos Diponibles para salida" + MenuOpciones.registrarVehiculo.size());
+
+        for (Vehiculo v : MenuOpciones.registrarVehiculo) {
+            if (v.getPlaca().equalsIgnoreCase(placaBuscada)) {
+                vehiculoEncontrado = v;
+                encontrado = true;
+
+                // Agregar el vehículo a la tabla
+                Object[] fila = new Object[3];
+                fila[0] = v.getPlaca();
+                fila[1] = v.getMarca();
+                fila[2] = v.getHoraEntrada().format(formatter);
+
+                modeloTabla.addRow(fila);
+                break;
+            }
+        }
+        // Si no se encontró el vehículo
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(this,
                 "No se encontró ningún vehículo con la placa: " + placaBuscada + "\n" +
-                "Verifique que el vehículo esté registrado en el parqueo.", 
-                "Vehículo no encontrado", 
+                "Verifique que el vehículo esté registrado en el parqueo.",
+                "Vehículo no encontrado",
                 JOptionPane.ERROR_MESSAGE);
-    } else {
-        // Mostrar mensaje de éxito
-        JOptionPane.showMessageDialog(this, 
-                "Vehículo encontrado", 
-                "Éxito", 
+        } else {
+            // Mostrar mensaje de éxito
+            JOptionPane.showMessageDialog(this,
+                "Vehículo encontrado",
+                "Éxito",
                 JOptionPane.INFORMATION_MESSAGE);
-    }//fin de la    
-        
-        
+        }//fin de la
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
@@ -327,51 +324,66 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlacaActionPerformed
 
     private void btnConfirmarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarSalidaActionPerformed
-       if (vehiculoEncontrado == null) {
-        JOptionPane.showMessageDialog(this, 
-                "Primero debe buscar un vehículo", 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    // Calcular tarifa
-    vehiculoEncontrado.setHoraSalida(java.time.LocalDateTime.now());
-    double tarifa = vehiculoEncontrado.calcularTarifa();
-    
-    // Confirmar la salida
-    int respuesta = JOptionPane.showConfirmDialog(this, 
+    if (vehiculoEncontrado == null) {
+        JOptionPane.showMessageDialog(this,
+            "Primero debe buscar un vehículo","Error",JOptionPane.ERROR_MESSAGE);}
+    if (cmbHoraSalida.getSelectedItem() == null) {
+        JOptionPane.showMessageDialog(this,
+            "Debe seleccionar una hora de salida",
+            "Campo vacío",
+            JOptionPane.WARNING_MESSAGE);}
+    try {
+        // Definir y establecer hora seleccionada
+        String horaSalidaSeleccionada = (String) cmbHoraSalida.getSelectedItem();  
+        LocalTime horaSalida = LocalTime.parse(horaSalidaSeleccionada); 
+        LocalDate fechaHoy = LocalDate.now();
+        LocalDateTime horaSalidaFinal = LocalDateTime.of(fechaHoy, horaSalida); 
+        // Validar que la hora de salida sea mayor la entrada
+        if (!horaSalidaFinal.isAfter(vehiculoEncontrado.getHoraEntrada())) {
+            JOptionPane.showMessageDialog(this,
+                "La hora de salida debe ser posterior a la hora de entrada.", "Hora inválida", JOptionPane.ERROR_MESSAGE);}
+        // Asignar hora de salida
+        vehiculoEncontrado.setHoraSalida(horaSalidaFinal);
+        // Llamar metodo y calcular Tarifa
+        double tarifa = vehiculoEncontrado.calcularTarifa();
+        int respuesta = JOptionPane.showConfirmDialog(this,
             "¿Confirmar salida del vehículo?\n\n" +
             "Placa: " + vehiculoEncontrado.getPlaca() + "\n" +
-            "Tarifa a pagar: ₡" + String.format("%.2f", tarifa), 
-            "Confirmar Salida", 
+            "Hora entrada: " + vehiculoEncontrado.getHoraEntrada().format(DateTimeFormatter.ofPattern("HH:mm")) + "\n" +
+            "Hora salida: " + horaSalidaFinal.format(DateTimeFormatter.ofPattern("HH:mm")) + "\n" +
+            "Tarifa a pagar: ₡" + String.format("%.2f", tarifa),
+            "Confirmar Salida",
             JOptionPane.YES_NO_OPTION,
             JOptionPane.QUESTION_MESSAGE);
-    
-    if (respuesta == JOptionPane.YES_OPTION) {
-        // Eliminar el vehículo del ArrayList
-        MenuOpciones.registrarVehiculo.remove(vehiculoEncontrado);
-        
-        // Mostrar mensaje de éxito
-        JOptionPane.showMessageDialog(this, 
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            MenuOpciones.registrarVehiculo.remove(vehiculoEncontrado);
+
+            JOptionPane.showMessageDialog(this,
                 "Salida registrada exitosamente\n\n" +
                 "Placa: " + vehiculoEncontrado.getPlaca() + "\n" +
-                "Total pagado: ₡" + String.format("%.2f", tarifa), 
-                "Salida Exitosa", 
+                "Total pagado: ₡" + String.format("%.2f", tarifa),
+                "Salida Exitosa",
                 JOptionPane.INFORMATION_MESSAGE);
-        
-        // Limpiar formulario
-        txtPlaca.setText("");
-        modeloTabla.setRowCount(0);
-        vehiculoEncontrado = null;
-        txtPlaca.requestFocus();
+
+            txtPlaca.setText("");
+            modeloTabla.setRowCount(0);
+            vehiculoEncontrado = null;
+            txtPlaca.requestFocus();
+        }
+
+    } catch (DateTimeParseException e) {
+        JOptionPane.showMessageDialog(this,
+            "Formato de hora inválido. Use HH:mm",
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
     }
+
     }//GEN-LAST:event_btnConfirmarSalidaActionPerformed
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-            MenuOpciones menu = new MenuOpciones();
-        menu.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnRegresarActionPerformed
+    private void cmbHoraSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbHoraSalidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbHoraSalidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,24 +421,32 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPanePrincipal;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnConfirmarSalida;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JCheckBox cbxHoraSalida;
+    private javax.swing.JComboBox<String> cmbHoraSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblTitulo1;
-    private javax.swing.JLabel lblTituloTarifa;
     private javax.swing.JTable tblMostrarDatos;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+
+
+
+
+
+
 }
