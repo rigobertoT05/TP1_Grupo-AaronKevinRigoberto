@@ -69,6 +69,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         tblMostrarDatos = new javax.swing.JTable();
         lblTitulo1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        btnRegresar = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -179,6 +180,13 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             .addGap(0, 185, Short.MAX_VALUE)
         );
 
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -186,13 +194,15 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addComponent(btnConfirmarSalida))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnConfirmarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(145, 145, 145)
+                                    .addComponent(btnRegresar))
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(255, 255, 255)
                         .addComponent(lblTitulo1))
@@ -213,7 +223,9 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(btnConfirmarSalida)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConfirmarSalida)
+                    .addComponent(btnRegresar))
                 .addGap(25, 25, 25))
         );
 
@@ -251,6 +263,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     
     // Buscar el vehículo en el ArrayList
     boolean encontrado = false;
+        System.out.println("Vehicuos Diponibles para salida" + MenuOpciones.registrarVehiculo.size());
     for (Vehiculo v : MenuOpciones.registrarVehiculo) {
         if (v.getPlaca().equalsIgnoreCase(placaBuscada)) {
             vehiculoEncontrado = v;
@@ -330,6 +343,12 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_btnConfirmarSalidaActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+            MenuOpciones menu = new MenuOpciones();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -368,6 +387,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnConfirmarSalida;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
