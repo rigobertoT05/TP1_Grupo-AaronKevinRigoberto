@@ -172,9 +172,9 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                     .addComponent(lblPlaca1)
                     .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMarca))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMarca, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlaca)
@@ -206,7 +206,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         switch (tipo) {
             case "Carro" -> { try { int numeroDePuertas = Integer.parseInt(txtAtributoExtra.getText());
                  registrarVehiculo.add(new Carro(marca ,Placa ,horaEntrada ,null ,numeroDePuertas));
-                           } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puetas Invalido");}}
+                           } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puertas Invalido");}}
             case "Bicicleta" -> { try { int cambios = Integer.parseInt(txtAtributoExtra.getText());
                    String tipoBici = txtAtributoExtra2.getText();
                      registrarVehiculo.add(new Bicibleta(marca ,Placa ,horaEntrada,null ,cambios,tipoBici )); }catch (NumberFormatException e) {}}
@@ -215,7 +215,12 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                    int cilindrada = Integer.parseInt(txtAtributoExtra.getText());
                    registrarVehiculo.add(new Moto(marca, Placa, horaEntrada, null,cilindrada, sidecar)); }
             case "Camion" -> { int ejes = Integer.parseInt(txtAtributoExtra.getText());
-                registrarVehiculo.add(new Camion(marca, Placa, horaEntrada, null,ejes));}}
+                registrarVehiculo.add(new Camion(marca, Placa, horaEntrada, null,ejes) {
+                @Override
+                public String obtenerTipo() {
+                    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                }
+            });}}
           JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
           System.out.println("Cantidad De Vehiculos Registrados" + registrarVehiculo.size());
           for (Vehiculo vehiculo : registrarVehiculo) {

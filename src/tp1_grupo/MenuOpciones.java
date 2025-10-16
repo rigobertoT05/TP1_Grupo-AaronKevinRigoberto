@@ -191,7 +191,7 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
     }//GEN-LAST:event_btnEntradaActionPerformed
 
     private void btnListaDeVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaDeVehiculosActionPerformed
-       VehiculosParqueo parqueo = new VehiculosParqueo();
+       VehiculosParqueo parqueo = new VehiculosParqueo(registrarVehiculo);
        parqueo.setVisible(true);
     }//GEN-LAST:event_btnListaDeVehiculosActionPerformed
 

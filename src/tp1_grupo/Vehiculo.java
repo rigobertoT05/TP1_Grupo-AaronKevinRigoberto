@@ -5,6 +5,7 @@
 package tp1_grupo;
 
 import java.time.LocalDateTime;
+import java.time.Duration;
 
 /**
  *
@@ -18,9 +19,21 @@ public abstract class Vehiculo {
     public Vehiculo(String marca, String placa,LocalDateTime horaEntrada, LocalDateTime horaSalida) {
         this.marca = marca;
         this.placa = placa;
-        this.horaEntrada = LocalDateTime.now();
-        this.horaSalida = LocalDateTime.now();
+        this.horaEntrada = (horaEntrada != null) ? horaEntrada : LocalDateTime.now();
+        this.horaSalida = horaSalida;
+        
+   
     }
+    public long calcularHorasParqueo() {
+        if (horaEntrada == null || horaSalida == null) {
+            return 0;
+        }
+        long minutos = java.time.Duration.between(horaEntrada, horaSalida).toMinutes();
+        return (minutos + 59) / 60;
+    }
+    
+    public abstract String obtenerTipo();
+    
     
     
     public String getMarca() {
