@@ -30,5 +30,12 @@ public class Moto extends Vehiculo {
            ", Placa: " + getPlaca() + ", Cilindraje: " + cilindraje + "Tiene Sidecar: " + tieneSidecar;
 }
 
+    @Override
+    public String obtenerTipo() {
+       
+        return null;
+       
+    }
+
     
 }

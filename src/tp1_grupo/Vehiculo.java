@@ -11,7 +11,7 @@ import java.time.Duration;
  *
  * @author rigoberto
  */
-public abstract class Vehiculo {
+abstract class Vehiculo {
     protected String marca, placa;
     protected  LocalDateTime horaEntrada;
     protected LocalDateTime horaSalida;
