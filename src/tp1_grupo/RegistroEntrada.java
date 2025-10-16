@@ -203,38 +203,24 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
         String marca = txtMarca.getText(); 
         String Placa = txtPlaca.getText();
-        
-        
         switch (tipo) {
-            case "Carro" -> {
-            try { 
-                 int numeroDePuertas = Integer.parseInt(txtAtributoExtra.getText());
+            case "Carro" -> { try { int numeroDePuertas = Integer.parseInt(txtAtributoExtra.getText());
                  registrarVehiculo.add(new Carro(marca ,Placa ,horaEntrada ,null ,numeroDePuertas));
                            } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puetas Invalido");}}
-            case "Bicicleta" ->
-            { try {
-                  int cambios = Integer.parseInt(txtAtributoExtra.getText());
+            case "Bicicleta" -> { try { int cambios = Integer.parseInt(txtAtributoExtra.getText());
                    String tipoBici = txtAtributoExtra2.getText();
-                     registrarVehiculo.add(new Bicibleta(marca ,Placa ,horaEntrada,null ,cambios,tipoBici )); }
-                 catch (NumberFormatException e) {}}
-            case "Motocicleta" -> {
-                   Boolean sidecar = txtAtributoExtra.getText().equalsIgnoreCase("Si")? true : false;
-                   
+                     registrarVehiculo.add(new Bicibleta(marca ,Placa ,horaEntrada,null ,cambios,tipoBici )); }catch (NumberFormatException e) {}}
+            case "Motocicleta" -> { String TieneSidecar = txtAtributoExtra.getText();
+                Boolean sidecar = TieneSidecar.equalsIgnoreCase("Si")? true : false;
                    int cilindrada = Integer.parseInt(txtAtributoExtra.getText());
                    registrarVehiculo.add(new Moto(marca, Placa, horaEntrada, null,cilindrada, sidecar)); }
-            case "Camion" -> { 
-                int ejes = Integer.parseInt(txtAtributoExtra.getText());
+            case "Camion" -> { int ejes = Integer.parseInt(txtAtributoExtra.getText());
                 registrarVehiculo.add(new Camion(marca, Placa, horaEntrada, null,ejes));}}
           JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
           System.out.println("Cantidad De Vehiculos Registrados" + registrarVehiculo.size());
-          
           for (Vehiculo vehiculo : registrarVehiculo) {
               System.out.println(vehiculo);
         }
-          /*
-          MenuOpciones menu = new MenuOpciones();
-          menu.setVisible(true);
-          this.dispose(); */
     }//GEN-LAST:event_bntRegistrarActionPerformed
 
     private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
@@ -244,30 +230,34 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
     private void cmdOpcionVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOpcionVehiculosActionPerformed
     String tipo = (String) cmdOpcionVehiculos.getSelectedItem(); 
         switch (tipo) {
-            case "Carro": lblAtributosVehiculoExtra.setText("Numero de Puertas:");
+            case "Carro" -> { lblAtributosVehiculoExtra.setText("Numero de Puertas:");
                           txtAtributoExtra.getText();
                           txtAtributoExtra2.setVisible(false);
                           lblAtributosVehiculoExtra2.setVisible(false); break;
-            case "Bicicleta":lblAtributosVehiculoExtra.setText("Cambios: ");
+            }
+            case "Bicicleta" -> {lblAtributosVehiculoExtra.setText("Cambios: ");
                             txtAtributoExtra.getText();
                               lblAtributosVehiculoExtra2.setText("Tipo: ");
                             txtAtributoExtra2.getText();
                             txtAtributoExtra2.setVisible(true);
                           lblAtributosVehiculoExtra2.setVisible(true); break;
-            case "Motocicleta":lblAtributosVehiculoExtra.setText("tiene Sidecar (SI/NO):");
+            }
+            case "Motocicleta" -> {
+                            lblAtributosVehiculoExtra2.setVisible(true);
+                            lblAtributosVehiculoExtra.setText("tiene Sidecar (SI/NO): ");
                             txtAtributoExtra.getText();
-                            lblAtributosVehiculoExtra.setText("Cilindraje: ");
-                            txtAtributoExtra2.getText();
+                            txtAtributoExtra.setVisible(true);
                             txtAtributoExtra2.setVisible(true);
-                          lblAtributosVehiculoExtra2.setVisible(true); break;
-            case "Camion":lblAtributosVehiculoExtra.setText("numero de ejes:");
+                            lblAtributosVehiculoExtra2.setText("Cilindraje: ");
+                            txtAtributoExtra2.getText();
+            }
+            case "Camion" -> {lblAtributosVehiculoExtra.setText("numero de ejes:");
                             txtAtributoExtra.getText(); 
                             lblAtributosVehiculoExtra2.setVisible(false); 
                             txtAtributoExtra2.setVisible(false);break;
-            default: lblAtributosVehiculoExtra.setText("");
-                     lblAtributosVehiculoExtra2.setText("");        }
-        
-      
+            }
+            default -> {lblAtributosVehiculoExtra.setText("");
+                     lblAtributosVehiculoExtra2.setText("");        }}
     }//GEN-LAST:event_cmdOpcionVehiculosActionPerformed
 
     private void txtAtributoExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtributoExtraActionPerformed
