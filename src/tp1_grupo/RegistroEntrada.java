@@ -207,10 +207,8 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         
         switch (tipo) {
             case "carro" -> {
-            try { 
                  int numeroDePuertas = Integer.parseInt(txtAtributoExtra.getText());
-                 registrarVehiculo.add(new Carro(marca ,Placa ,horaEntrada ,null ,numeroDePuertas));
-                           } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puetas Invalido");}}
+                 registrarVehiculo.add(new Carro(marca ,Placa ,horaEntrada ,null ,numeroDePuertas)); }
             case "Bicicleta" ->
             { try {
                   int cambios = Integer.parseInt(txtAtributoExtra.getText());
