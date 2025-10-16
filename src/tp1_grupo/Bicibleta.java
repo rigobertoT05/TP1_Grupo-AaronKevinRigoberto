@@ -20,6 +20,8 @@ public class Bicibleta extends Vehiculo {
     @Override
     public double calcularTarifa() {
         return 0;
-    };
-    
+    }
+     public String toString() {
+    return "Bicicleta - Marca: " + getMarca() +
+           ", Placa: " + getPlaca() + ", Cambios: " + cambios + ", Tipo: " + tipo;}
 }

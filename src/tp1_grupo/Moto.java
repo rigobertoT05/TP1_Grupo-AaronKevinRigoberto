@@ -18,12 +18,17 @@ public class Moto extends Vehiculo {
         this.tieneSidecar = tieneSidecar;
         this.cilindraje = cilindraje;
     }
-
     @Override
     public double calcularTarifa() {
         
         return 0;
         
     }
+    
+       public String toString() {
+    return "Motocicleta - Marca: " + getMarca() +
+           ", Placa: " + getPlaca() + ", Cilindraje: " + cilindraje + "Tiene Sidecar: " + tieneSidecar;
+}
+
     
 }

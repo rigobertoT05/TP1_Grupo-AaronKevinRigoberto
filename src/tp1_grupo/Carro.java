@@ -24,6 +24,9 @@ public class Carro extends Vehiculo {
          return 0;
       
     }
-
-    
+    public String toString() { 
+    return "Carro - Marca: " + getMarca() +
+           ", Placa: " + getPlaca() + ", Numero de Puertas: " + numeroDePuertas;
 }
+}  
+

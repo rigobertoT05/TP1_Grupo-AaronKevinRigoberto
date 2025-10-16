@@ -21,5 +21,7 @@ public class Camion extends Vehiculo {
     public double calcularTarifa() {
         return 0;
     };
-    
-}
+     public String toString() {
+    return "Camion - Marca: " + getMarca() +
+           ", Placa: " + getPlaca() + ", Ejes: " + ejes;
+} }
