@@ -31,84 +31,93 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblRegistroDeEntrada" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <Component id="lblRegistroDeEntrada" min="-2" pref="178" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblPlaca1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cmdOpcionVehiculos" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lblAtributosVehiculoExtra" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblMarca" min="-2" pref="60" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtPlaca" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <Component id="txtMarca" min="-2" pref="145" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="lblPlaca" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
-                          <Component id="txtAtributoExtra" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="lblHoraEntrada" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtHoraEntrada" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="bntRegistrar" min="-2" pref="168" max="-2" attributes="0"/>
-                  </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="bntRegistrar" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblAtributosVehiculoExtra1" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="txtAtributoExtra2" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txtAtributoExtra2" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="lblAtributosVehiculoExtra" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtAtributoExtra" alignment="0" pref="161" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="lblAtributosVehiculoExtra1" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblPlaca1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="cmdOpcionVehiculos" min="-2" pref="130" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblPlaca" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtMarca" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblMarca" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtPlaca" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="99" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblRegistroDeEntrada" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              <Component id="lblRegistroDeEntrada" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPlaca1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdOpcionVehiculos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblMarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblMarca" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtMarca" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblHoraEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtHoraEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
               <Component id="lblAtributosVehiculoExtra" min="-2" pref="28" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="txtAtributoExtra" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Component id="lblAtributosVehiculoExtra1" min="-2" pref="28" max="-2" attributes="0"/>
-              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="txtAtributoExtra2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Component id="bntRegistrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -203,6 +212,19 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblHoraEntrada">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Hora de entrada: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtHoraEntrada">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHoraEntradaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
