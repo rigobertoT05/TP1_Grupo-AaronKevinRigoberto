@@ -7,7 +7,6 @@ package tp1_grupo;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
 /**
  *
  * @author rigoberto
@@ -142,7 +141,8 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistraSalidaYCalculaTarifaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistraSalidaYCalculaTarifaActionPerformed
-        // TODO add your handling code here:
+       RegistroSalidayCalcularTarifa registroSalida = new RegistroSalidayCalcularTarifa();
+       registroSalida.setVisible(true);
     }//GEN-LAST:event_btnRegistraSalidaYCalculaTarifaActionPerformed
 
     private void btnReporteIngresosGeneradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteIngresosGeneradosActionPerformed
@@ -159,7 +159,8 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
     }//GEN-LAST:event_btnEntradaActionPerformed
 
     private void btnListaDeVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaDeVehiculosActionPerformed
-        // TODO add your handling code here:
+       VehiculosParqueo parqueo = new VehiculosParqueo();
+       parqueo.setVisible(true);
     }//GEN-LAST:event_btnListaDeVehiculosActionPerformed
 
     /**
