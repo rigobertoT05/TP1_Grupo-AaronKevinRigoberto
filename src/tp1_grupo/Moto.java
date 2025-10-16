@@ -13,15 +13,15 @@ import java.time.LocalDateTime;
 public class Moto extends Vehiculo {
     private boolean tieneSidecar;
     private int cilindraje;
-    public Moto(String marca, String placa, LocalDateTime horaEntrada, LocalDateTime horaSalida, int cilindraje,boolean tieneSidecar) {
-        super(marca, placa, horaEntrada, horaSalida);
+    public Moto(String marca, String placa,String tipo, LocalDateTime horaEntrada, LocalDateTime horaSalida, int cilindraje,boolean tieneSidecar) {
+        super(marca, placa,"Motocicleta", horaEntrada, horaSalida);
         this.tieneSidecar = tieneSidecar;
         this.cilindraje = cilindraje;
     }
     @Override
     public double calcularTarifa() {
-        
-        return 0;
+      long horas = calcularHorasParqueo();
+        return horas * 500;
         
     }
     
@@ -32,7 +32,6 @@ public class Moto extends Vehiculo {
 
     @Override
     public String obtenerTipo() {
-       
         return null;
        
     }

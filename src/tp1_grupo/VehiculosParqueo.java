@@ -20,14 +20,14 @@ public class VehiculosParqueo extends javax.swing.JFrame {
     
     public VehiculosParqueo(ArrayList<Vehiculo>lista) {
         initComponents();
-        this.registrarVehiculo = lista;
+        this.registrarVehiculo = MenuOpciones.registrarVehiculo;
         configurarTabla();
         cargarVehiculos();
     }
 
     private void configurarTabla(){
         modeloTabla = new DefaultTableModel(
-           new Object[]{"Placa", "Marca", "Tipo", "Hora Entrada"}, 0
+           new Object[]{"Marca", "Placa", "Tipo", "Hora Entrada"}, 0
         )   {
         @Override
         public boolean isCellEditable(int row,int column){
@@ -44,14 +44,14 @@ public class VehiculosParqueo extends javax.swing.JFrame {
     private void cargarVehiculos() {
         modeloTabla.setRowCount(0);
         
-        if (registrarVehiculo.isEmpty()) {
-            modeloTabla.addRow(new Object[]{"---", "Sin vehículos", "---", "---"});
+        if (MenuOpciones.registrarVehiculo.isEmpty()) {
+            modeloTabla.addRow(new Object[]{"Sin vehículos","---", "---", "---"});
         } else {
             for (Vehiculo v : registrarVehiculo) {
                 modeloTabla.addRow(new Object[]{
                     v.getPlaca(),
                     v.getMarca(),
-                    v.obtenerTipo(),
+                    v.getTipo(),
                     v.getHoraEntrada().format(formatter)
                 });
             }

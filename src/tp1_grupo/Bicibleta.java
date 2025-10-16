@@ -12,14 +12,17 @@ import java.time.LocalDateTime;
  */
 public class Bicibleta extends Vehiculo {
     private int cambios;
-    private String tipo;
-    public Bicibleta(String marca, String placa, LocalDateTime horaEntrada, LocalDateTime horaSalida, int cambios, String tipo) {
-        super(marca, placa, horaEntrada, horaSalida);
+    private String tipoBicicleta;
+    public Bicibleta(String marca, String placa,String tipo, LocalDateTime horaEntrada, LocalDateTime horaSalida, int cambios, String tipoBicicleta ) {
+        super(marca, placa,"Bicicleta", horaEntrada, horaSalida);
+        this.cambios = cambios;
+        this.tipoBicicleta = tipoBicicleta;
     }
 
     @Override
     public double calcularTarifa() {
-        return 0;
+        long horas = calcularHorasParqueo();
+        return horas * 300;
     }
      public String toString() {
     return "Bicicleta - Marca: " + getMarca() +

@@ -13,15 +13,15 @@ import java.time.LocalDateTime;
 public class Carro extends Vehiculo {
      public int numeroDePuertas; 
 
-    public Carro(String marca, String placa, LocalDateTime horaEntrada, LocalDateTime horaSalida, int numeroDePuertas) {
-        super(marca, placa, horaEntrada, horaSalida);
+    public Carro(String marca, String placa, String tipo ,LocalDateTime horaEntrada, LocalDateTime horaSalida, int numeroDePuertas) {
+        super(marca, placa,"Carro", horaEntrada, horaSalida);
         this.numeroDePuertas = numeroDePuertas;
     }
 
     @Override
     public double calcularTarifa() {
-      
-         return 0;
+      long horas = calcularHorasParqueo();
+        return horas * 1000;
       
     }
     public String toString() { 

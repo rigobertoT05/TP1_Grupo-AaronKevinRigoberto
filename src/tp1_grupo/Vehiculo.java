@@ -12,16 +12,17 @@ import java.time.Duration;
  * @author rigoberto
  */
 abstract class Vehiculo {
-    protected String marca, placa;
+    protected String marca, placa, tipo;
     protected  LocalDateTime horaEntrada;
     protected LocalDateTime horaSalida;
 
-    public Vehiculo(String marca, String placa,LocalDateTime horaEntrada, LocalDateTime horaSalida) {
+
+    public Vehiculo(String marca, String placa, String tipo, LocalDateTime horaEntrada, LocalDateTime horaSalida) {
         this.marca = marca;
         this.placa = placa;
         this.horaEntrada = (horaEntrada != null) ? horaEntrada : LocalDateTime.now();
         this.horaSalida = horaSalida;
-        
+        this.tipo = tipo;
    
     }
     public long calcularHorasParqueo() {
@@ -50,6 +51,14 @@ abstract class Vehiculo {
 
     public void setPlaca(String placa) {
         this.placa = placa;
+    }
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public LocalDateTime getHoraEntrada() {
