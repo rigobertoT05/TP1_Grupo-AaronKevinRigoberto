@@ -29,4 +29,9 @@ public class Camion extends Vehiculo {
         return 2000.0;
     }
 
+    @Override
+    public String obtenerTipo() {
+       return "Camion";
+    }
+
 }
