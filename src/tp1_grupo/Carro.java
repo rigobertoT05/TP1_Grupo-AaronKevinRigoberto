@@ -20,9 +20,8 @@ public class Carro extends Vehiculo {
 
     @Override
     public double calcularTarifa() {
-      long horas = calcularHorasParqueo();
+    long horas = calcularHorasParqueo();
         return horas * 1000;
-      
     }
     public String toString() { 
     return "Carro - Marca: " + getMarca() +
