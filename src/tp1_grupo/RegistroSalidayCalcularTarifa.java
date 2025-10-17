@@ -319,7 +319,10 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlacaActionPerformed
 
     private void btnConfirmarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarSalidaActionPerformed
-    if (vehiculoEncontrado == null) {
+       
+        
+     
+        if (vehiculoEncontrado == null) {
         JOptionPane.showMessageDialog(this,
             "Primero debe buscar un vehículo","Error",JOptionPane.ERROR_MESSAGE);}
     if (cmbHoraSalida.getSelectedItem() == null) {
@@ -329,10 +332,14 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             JOptionPane.WARNING_MESSAGE);}
     try {
         // Definir y establecer hora seleccionada
-        String horaSalidaSeleccionada = (String) cmbHoraSalida.getSelectedItem();  
+        String horaSalidaSeleccionada = (String) cmbHoraSalida.getSelectedItem();
         LocalTime horaSalida = LocalTime.parse(horaSalidaSeleccionada); 
         LocalDate fechaHoy = LocalDate.now();
         LocalDateTime horaSalidaFinal = LocalDateTime.of(fechaHoy, horaSalida); 
+        if (horaSalidaSeleccionada.equals("00:00")) {
+           JOptionPane.showConfirmDialog(this, "Por favor, Seleccione una hora de salida válida"); return;
+        }
+        
         // Validar que la hora de salida sea mayor la entrada
         if (!horaSalidaFinal.isAfter(vehiculoEncontrado.getHoraEntrada())) {
             JOptionPane.showMessageDialog(this,
