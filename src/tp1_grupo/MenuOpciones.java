@@ -190,9 +190,7 @@ public class MenuOpciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistraSalidaYCalculaTarifaActionPerformed
 
     private void btnEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradaActionPerformed
-        RegistroEntrada registro = new RegistroEntrada();
-        registro.setVisible(true); 
-        this.dispose();// TODO add your handling code here:
+ // TODO add your handling code here:
         RegistroEntrada registro = new RegistroEntrada(this);
         registro.setVisible(true);
         this.setVisible(false);// TODO add your handling code here:

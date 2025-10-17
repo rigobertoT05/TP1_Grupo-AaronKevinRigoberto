@@ -12,7 +12,6 @@ public class Clase_principal {
     
  
     public static void main(String[] args) {
-        
      MenuOpciones Menu = new MenuOpciones();
       Menu.setVisible(true);
     }
