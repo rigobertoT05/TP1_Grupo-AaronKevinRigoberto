@@ -250,7 +250,7 @@ private MenuOpciones menu;
                  }
             case "Camion" -> { int ejes = Integer.parseInt(txtAtributoExtra1.getText());
                 MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); 
-            registroExitoso= true; } }
+             } } registroExitoso= true;
         } catch (NumberFormatException e) {JOptionPane.showConfirmDialog(this, "Error en el formato"); return; }
          // Mensaje al usuario despues de registrar correctamente
         if (registroExitoso) {
