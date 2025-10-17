@@ -18,12 +18,15 @@ public class ReporteIngresos extends javax.swing.JFrame {
     private DefaultTableModel modelo;
     private MenuOpciones menu;
 
+    
     public ReporteIngresos(MenuOpciones menu) {
         initComponents();
         this.menu = menu;
         setLocationRelativeTo(null);
         configurarTabla();
         cargarReporte();
+        tblIngresos.getTableHeader().setReorderingAllowed(false);
+        tblIngresos.getTableHeader().setResizingAllowed(false);
     }
 
     private void configurarTabla() {
