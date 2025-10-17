@@ -206,7 +206,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         String tieneSidecar;
         String marca = txtMarca.getText(); 
         String Placa = txtPlaca.getText().trim().toLowerCase();
-        if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.isBlank() ) {
+        if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.equals("Seleccione el tipo....")) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos");
             return;
         }       // Se almacenan 
@@ -238,6 +238,12 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
     String tipo = (String) cmdOpcionVehiculos.getSelectedItem(); 
         switch (tipo) {
             // Solicita los Atributos especiales segun el Vehiculo
+            case "Seleccione el tipo...." -> {
+                          lblAtributosVehiculoExtra1.setVisible(false);
+                          txtAtributoExtra1.setVisible(false);
+                          lblAtributosVehiculoExtra2.setVisible(false);
+                          txtAtributoExtra2.setVisible(false);
+            }
             case "Carro" -> { lblAtributosVehiculoExtra1.setText("Numero de Puertas:");
                           txtAtributoExtra1.getText(); 
                           lblAtributosVehiculoExtra1.setVisible(true);
