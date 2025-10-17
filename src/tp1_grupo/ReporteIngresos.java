@@ -50,24 +50,25 @@ public class ReporteIngresos extends javax.swing.JFrame {
         // Recorrer todos los vehículos registrados
         for (Vehiculo v : registrarVehiculo) {
             String tipo = v.toString();
-            
-            // Contar cantidad
             cantidadPorTipo.put(tipo, cantidadPorTipo.getOrDefault(tipo, 0) + 1);
-            
-            // Sumar ingresos
+             double tarifa = v.calcularTarifa();
+            ingresoPorTipo.put(tipo, ingresoPorTipo.getOrDefault(tipo, 0.0) + tarifa);
+        }
+        for (Vehiculo v : MenuOpciones.historialVehiculos) {
+            String tipo = v.obtenerTipo();
+            cantidadPorTipo.put(tipo, cantidadPorTipo.getOrDefault(tipo, 0) + 1);
             double tarifa = v.calcularTarifa();
             ingresoPorTipo.put(tipo, ingresoPorTipo.getOrDefault(tipo, 0.0) + tarifa);
         }
-
-        // Si no hay datos
+           
+            // Si no hay datos
         if (cantidadPorTipo.isEmpty()) {
             modelo.addRow(new Object[]{"---", "0", "₡0.00"});
             txtTotalGeneral.setText("₡0.00");
             return;
-        }
-
-        // Agregar filas a la tabla
-        for (String tipo : cantidadPorTipo.keySet()) {
+        }  
+        
+           for (String tipo : cantidadPorTipo.keySet()) {
             int cantidad = cantidadPorTipo.get(tipo);
             double total = ingresoPorTipo.get(tipo);
             
@@ -93,6 +94,7 @@ public class ReporteIngresos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtTotalGeneral = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ReporteIngresos");
@@ -130,6 +132,13 @@ public class ReporteIngresos extends javax.swing.JFrame {
             }
         });
 
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -144,7 +153,9 @@ public class ReporteIngresos extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(49, 49, 49)
                 .addComponent(txtTotalGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegresar)
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,8 +167,9 @@ public class ReporteIngresos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtTotalGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(txtTotalGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegresar))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,13 +185,21 @@ public class ReporteIngresos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     private void txtTotalGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalGeneralActionPerformed
         // TODO add your handling code here:
         MenuOpciones menu = new MenuOpciones();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_txtTotalGeneralActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        MenuOpciones menu = new MenuOpciones();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -201,6 +221,7 @@ public class ReporteIngresos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -358,6 +358,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             JOptionPane.QUESTION_MESSAGE);
 
         if (respuesta == JOptionPane.YES_OPTION) {
+            MenuOpciones.historialVehiculos.add(vehiculoEncontrado);
             MenuOpciones.registrarVehiculo.remove(vehiculoEncontrado);
 
             JOptionPane.showMessageDialog(this,
@@ -385,6 +386,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbHoraSalidaActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */

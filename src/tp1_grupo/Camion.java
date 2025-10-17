@@ -24,5 +24,9 @@ public class Camion extends Vehiculo {
     return "Camion - Marca: " + getMarca() +
            ", Placa: " + getPlaca() + ", Ejes: " + ejes;
 }
+     @Override
+    public double obtenerTarifaHoraria() {
+        return 2000.0;
+    }
 
 }

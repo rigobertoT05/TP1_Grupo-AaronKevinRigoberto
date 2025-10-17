@@ -27,5 +27,13 @@ public class Bicicleta extends Vehiculo {
      public String toString() {
     return "Bicicleta - Marca: " + getMarca() +
            ", Placa: " + getPlaca() + ", Cambios: " + cambios + ", Tipo: " + tipo;}
-
-}
+    
+    @Override
+    public String obtenerTipo() {
+    return "Bicicleta";
+    }
+    @Override
+    public double obtenerTarifaHoraria() {
+        return 300.0;
+    }
+}   

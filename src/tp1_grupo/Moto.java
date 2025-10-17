@@ -29,6 +29,14 @@ public class Moto extends Vehiculo {
     return "Motocicleta - Marca: " + getMarca() +
            ", Placa: " + getPlaca() + ", Cilindraje: " + cilindraje + "Tiene Sidecar: " + tieneSidecar;
 }
+    @Override
+    public String obtenerTipo() {
+    return "Motocicleta";
+}
+    @Override
+    public double obtenerTarifaHoraria() {
+        return 500.0;
+    }
 
 
        

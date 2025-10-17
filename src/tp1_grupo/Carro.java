@@ -24,11 +24,19 @@ public class Carro extends Vehiculo {
         return horas * 1000;
       
     }
+    @Override
     public String toString() { 
     return "Carro - Marca: " + getMarca() +
            ", Placa: " + getPlaca() + ", Numero de Puertas: " + numeroDePuertas;
+    }
+    @Override
+    public String obtenerTipo() {
+    return "Carro";
 }
-
+    @Override
+    public double obtenerTarifaHoraria() {
+        return 1000.0;
+    }
 
 }  
 

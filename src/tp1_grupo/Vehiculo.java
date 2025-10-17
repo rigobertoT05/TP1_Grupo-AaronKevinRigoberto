@@ -6,6 +6,7 @@ package tp1_grupo;
 
 import java.time.LocalDateTime;
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 
 /**
  *
@@ -75,8 +76,29 @@ abstract class Vehiculo {
     public void setHoraSalida(LocalDateTime horaSalida) {
         this.horaSalida = horaSalida;
     }
+    public double calcularTarifa(){
+    if (horaSalida == null){
+        return 0;
+    }
     
-    public abstract double calcularTarifa();
+    long minutosTranscurridos = ChronoUnit.MINUTES.between(horaEntrada, horaSalida);
+    double horasTranscurridas = Math.ceil(minutosTranscurridos / 60.0);
+    
+    return obtenerTarifaHoraria() * horasTranscurridas;
+    }
+    
+    public abstract double obtenerTarifaHoraria();
+    
+    public abstract String obtenerTipo();
+    
+    @Override
+    public String toString(){
+        return "Vehiculo{" +
+                "marca='" + marca + '\''+
+                ",placa='" + placa + '\''+
+                ", tipo='" + obtenerTipo() + '\'' + 
+                '}';
+    }
     
     
 }    
