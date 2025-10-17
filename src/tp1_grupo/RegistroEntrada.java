@@ -14,12 +14,13 @@ import javax.swing.JOptionPane;
  */
 public class RegistroEntrada extends javax.swing.JFrame {
 public static LocalDateTime horaEntrada = LocalDateTime.now();
-
+private MenuOpciones menu;
     /** 
      * Creates new form RegistroEntrada
      */
-    public RegistroEntrada() {
+    public RegistroEntrada(MenuOpciones menu) {
         initComponents();
+        this.menu = menu;
     LocalDateTime horaEntrada = LocalDateTime.now();
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     txtHoraEntrada.setText(horaEntrada.format(formato));
@@ -294,7 +295,6 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
     }//GEN-LAST:event_txtHoraEntradaActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-       MenuOpciones menu = new MenuOpciones();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
@@ -329,7 +329,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroEntrada().setVisible(true);
+                new MenuOpciones().setVisible(true);
             }
         });
     }

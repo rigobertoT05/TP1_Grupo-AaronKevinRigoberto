@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
+import tp1_grupo.MenuOpciones;
 
 /**
  *
@@ -17,9 +18,11 @@ public class VehiculosParqueo extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     private ArrayList<Vehiculo> registrarVehiculo;
+    private MenuOpciones menu;
     
-    public VehiculosParqueo(ArrayList<Vehiculo>lista) {
+    public VehiculosParqueo(ArrayList<Vehiculo>lista, MenuOpciones menu) {
         initComponents();
+        this.menu = menu;
         this.registrarVehiculo = lista;
         configurarTabla();
         cargarVehiculos();
@@ -166,7 +169,6 @@ public class VehiculosParqueo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-    MenuOpciones menu = new MenuOpciones();
     menu.setVisible(true);
     this.dispose();
 // TODO add your handling code here:
@@ -195,11 +197,11 @@ public class VehiculosParqueo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
-        }
-        VehiculosParqueo parqueo = new VehiculosParqueo(MenuOpciones.registrarVehiculo);
-        parqueo.setVisible(true);
-        java.awt.EventQueue.invokeLater(() -> {
+        } 
+                new MenuOpciones().setVisible(true);
             
+        java.awt.EventQueue.invokeLater(() ->  {            
+           
         });
     }
 
