@@ -38,6 +38,7 @@ public class ReporteIngresos extends javax.swing.JFrame {
                 return false;
             }
         };
+        // Ajustar ancho de columnas
         tblIngresos.setModel(modelo);
         tblIngresos.getColumnModel().getColumn(0).setPreferredWidth(120);
         tblIngresos.getColumnModel().getColumn(1).setPreferredWidth(80);
@@ -54,7 +55,7 @@ public class ReporteIngresos extends javax.swing.JFrame {
 
         // Recorrer todos los vehículos registrados
         for (Vehiculo v : registrarVehiculo) {
-            String tipo = v.toString();
+            String tipo = v.obtenerTipo();
             cantidadPorTipo.put(tipo, cantidadPorTipo.getOrDefault(tipo, 0) + 1);
              double tarifa = v.calcularTarifa();
             ingresoPorTipo.put(tipo, ingresoPorTipo.getOrDefault(tipo, 0.0) + tarifa);
@@ -104,6 +105,7 @@ public class ReporteIngresos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ReporteIngresos");
 
+        tblIngresos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tblIngresos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -125,9 +127,10 @@ public class ReporteIngresos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblIngresos);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Reporte General de Ingresos");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Total General:");
 
         txtTotalGeneral.setEditable(false);
@@ -137,6 +140,7 @@ public class ReporteIngresos extends javax.swing.JFrame {
             }
         });
 
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,27 +158,27 @@ public class ReporteIngresos extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(103, 103, 103))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel2)
-                .addGap(49, 49, 49)
-                .addComponent(txtTotalGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(txtTotalGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRegresar)
-                .addGap(20, 20, 20))
+                .addGap(38, 38, 38))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(9, 9, 9)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtTotalGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegresar))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(btnRegresar)
+                    .addComponent(txtTotalGeneral))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
