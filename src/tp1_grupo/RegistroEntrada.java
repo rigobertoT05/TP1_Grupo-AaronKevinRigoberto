@@ -6,14 +6,8 @@
 package tp1_grupo;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import tp1_grupo.Carro;
-import static tp1_grupo.MenuOpciones.registrarVehiculo;
-
 /**
  *
  * @author kevin
@@ -60,6 +54,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         lblRegistroDeEntrada.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRegistroDeEntrada.setText("Registro de entrada");
@@ -214,7 +209,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.isBlank() ) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos");
             return;
-        }
+        }       // Se almacenan 
         switch (tipo) {
             case "Carro" -> { try { int numeroDePuertas = Integer.parseInt(txtAtributoExtra1.getText());
                  MenuOpciones.registrarVehiculo.add(new Carro(marca ,Placa , tipo,horaEntrada ,null ,numeroDePuertas));
@@ -232,13 +227,8 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                  }
             case "Camion" -> { int ejes = Integer.parseInt(txtAtributoExtra1.getText());
                 MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); } }
-            
+                // Mensaje al usuario despues de registrar correctamente
                 JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
-            
-          System.out.println("Cantidad De Vehiculos Registrados" + MenuOpciones.registrarVehiculo.size());
-          for (Vehiculo vehiculo : MenuOpciones.registrarVehiculo) {
-              System.out.println(vehiculo);
-        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
@@ -247,6 +237,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
     private void cmdOpcionVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOpcionVehiculosActionPerformed
     String tipo = (String) cmdOpcionVehiculos.getSelectedItem(); 
         switch (tipo) {
+            // Solicita los Atributos especiales segun el Vehiculo
             case "Carro" -> { lblAtributosVehiculoExtra1.setText("Numero de Puertas:");
                           txtAtributoExtra1.getText(); 
                           lblAtributosVehiculoExtra1.setVisible(true);
