@@ -30,7 +30,9 @@ abstract class Vehiculo {
             return 0;
         }
         long minutos = java.time.Duration.between(horaEntrada, horaSalida).toMinutes();
-        return (minutos + 59) / 60;
+        
+        long bloques15min = (minutos + 14) / 15;
+        return (bloques15min + 3) / 4;
     }
     
     
@@ -77,4 +79,4 @@ abstract class Vehiculo {
     public abstract double calcularTarifa();
     
     
-}
+}    

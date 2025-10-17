@@ -10,10 +10,10 @@ import java.time.LocalDateTime;
  *
  * @author rigoberto
  */
-public class Bicibleta extends Vehiculo {
+public class Bicicleta extends Vehiculo {
     private int cambios;
     private String tipoBicicleta;
-    public Bicibleta(String marca, String placa,String tipo, LocalDateTime horaEntrada, LocalDateTime horaSalida, int cambios, String tipoBicicleta ) {
+    public Bicicleta(String marca, String placa,String tipo, LocalDateTime horaEntrada, LocalDateTime horaSalida, int cambios, String tipoBicicleta ) {
         super(marca, placa,"Bicicleta", horaEntrada, horaSalida);
         this.cambios = cambios;
         this.tipoBicicleta = tipoBicicleta;
