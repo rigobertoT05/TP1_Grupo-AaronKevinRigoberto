@@ -168,8 +168,9 @@ public class MenuOpciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReporteIngresosGeneradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteIngresosGeneradosActionPerformed
-        ReporteIngresos reporte = new ReporteIngresos();
+        ReporteIngresos reporte = new ReporteIngresos(this);
         reporte.setVisible(true);
+         this.setVisible(false);
     }//GEN-LAST:event_btnReporteIngresosGeneradosActionPerformed
 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
@@ -177,19 +178,24 @@ public class MenuOpciones extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentAdded
 
     private void btnListaDeVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaDeVehiculosActionPerformed
-       VehiculosParqueo parqueo = new VehiculosParqueo(registrarVehiculo);
+       VehiculosParqueo parqueo = new VehiculosParqueo(registrarVehiculo,this);
        parqueo.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_btnListaDeVehiculosActionPerformed
 
     private void btnRegistraSalidaYCalculaTarifaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistraSalidaYCalculaTarifaActionPerformed
-     RegistroSalidayCalcularTarifa registroSalida = new RegistroSalidayCalcularTarifa();
+     RegistroSalidayCalcularTarifa registroSalida = new RegistroSalidayCalcularTarifa(this);
      registroSalida.setVisible(true);
+      this.setVisible(false);
     }//GEN-LAST:event_btnRegistraSalidaYCalculaTarifaActionPerformed
 
     private void btnEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradaActionPerformed
         RegistroEntrada registro = new RegistroEntrada();
         registro.setVisible(true); 
         this.dispose();// TODO add your handling code here:
+        RegistroEntrada registro = new RegistroEntrada(this);
+        registro.setVisible(true);
+        this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_btnEntradaActionPerformed
 
     /**

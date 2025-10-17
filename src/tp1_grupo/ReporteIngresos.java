@@ -16,9 +16,11 @@ import static tp1_grupo.MenuOpciones.registrarVehiculo;
  */
 public class ReporteIngresos extends javax.swing.JFrame {
     private DefaultTableModel modelo;
+    private MenuOpciones menu;
 
-    public ReporteIngresos() {
+    public ReporteIngresos(MenuOpciones menu) {
         initComponents();
+        this.menu = menu;
         setLocationRelativeTo(null);
         configurarTabla();
         cargarReporte();
@@ -215,7 +217,7 @@ public class ReporteIngresos extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ReporteIngresos().setVisible(true);
+                new MenuOpciones().setVisible(true);
             }
         });
     }

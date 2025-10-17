@@ -25,9 +25,11 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     private Vehiculo vehiculoEncontrado = null;
+    private MenuOpciones menu;
 
-    public RegistroSalidayCalcularTarifa() {
+    public RegistroSalidayCalcularTarifa(MenuOpciones menu) {
         initComponents();
+        this.menu = menu;
         configurarTabla();
         configurarComboBox();
         setLocationRelativeTo(null);
@@ -104,8 +106,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        JPanePrincipal.setBackground(java.awt.Color.darkGray);
-
         btnConfirmarSalida.setBackground(new java.awt.Color(255, 255, 255));
         btnConfirmarSalida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnConfirmarSalida.setForeground(new java.awt.Color(0, 0, 0));
@@ -116,9 +116,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(java.awt.Color.gray);
-
-        jLabel1.setForeground(java.awt.Color.black);
         jLabel1.setText("Introduzca el N° de placa:");
 
         txtPlaca.addActionListener(new java.awt.event.ActionListener() {
@@ -159,13 +156,12 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(37, 37, 37)
+                        .addGap(47, 47, 47)
                         .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(btnBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(5, Short.MAX_VALUE))
+                        .addGap(63, 63, 63)
+                        .addComponent(btnBuscar))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,8 +175,8 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        lblTitulo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTitulo1.setForeground(java.awt.Color.white);
+        lblTitulo1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        lblTitulo1.setForeground(java.awt.Color.black);
         lblTitulo1.setText("Registro de salida");
 
         btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
@@ -195,7 +191,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Hora Salida: ");
         jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -218,9 +213,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JPanePrincipalLayout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(lblTitulo1))
-                    .addGroup(JPanePrincipalLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -229,8 +221,11 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                         .addGap(227, 227, 227)
                         .addComponent(btnConfirmarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(btnRegresar)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(btnRegresar))
+                    .addGroup(JPanePrincipalLayout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(lblTitulo1)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         JPanePrincipalLayout.setVerticalGroup(
             JPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +260,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        MenuOpciones menu = new MenuOpciones();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
@@ -417,7 +411,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroSalidayCalcularTarifa().setVisible(true);
+                new MenuOpciones().setVisible(true);
             }
         });
     }

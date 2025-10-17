@@ -14,18 +14,20 @@ import javax.swing.JOptionPane;
  */
 public class RegistroEntrada extends javax.swing.JFrame {
 public static LocalDateTime horaEntrada = LocalDateTime.now();
-
+private MenuOpciones menu;
     /** 
      * Creates new form RegistroEntrada
      */
-    public RegistroEntrada() {
+    public RegistroEntrada(MenuOpciones menu) {
         initComponents();
+        this.menu = menu;
     LocalDateTime horaEntrada = LocalDateTime.now();
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     txtHoraEntrada.setText(horaEntrada.format(formato));
     txtAtributoExtra1.setVisible(false);
     txtAtributoExtra2.setVisible(false);
-    
+    setLocationRelativeTo(null);
+    cmbTiposDeBici.setVisible(false);
     }
 
     /**
@@ -52,6 +54,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         lblHoraEntrada = new javax.swing.JLabel();
         txtHoraEntrada = new javax.swing.JTextField();
         btnRegresar = new javax.swing.JButton();
+        cmbTiposDeBici = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -120,6 +123,13 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
             }
         });
 
+        cmbTiposDeBici.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir", "Montaña", "Ruta", "BiciMoto", "Urbuna", "Eléctrica", "Híbrida", "BMX", " " }));
+        cmbTiposDeBici.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTiposDeBiciActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,11 +152,9 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(lblAtributosVehiculoExtra1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtAtributoExtra1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-                    .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(lblPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,7 +167,13 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblPlaca1)
                         .addGap(18, 18, 18)
-                        .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbTiposDeBici, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -188,7 +202,9 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAtributoExtra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
-                .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTiposDeBici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
@@ -200,22 +216,26 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+  
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
+//        cmdOpcionVehiculos.getSelectedItem()
+        String tipoBici = (String) cmbTiposDeBici.getSelectedItem();
         String tieneSidecar;
         String marca = txtMarca.getText(); 
         String Placa = txtPlaca.getText().trim().toLowerCase();
-        if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.equals("Seleccione el tipo....")) {
-            JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos");
-            return;
-        }       // Se almacenan 
-        switch (tipo) {
+        if (Placa.isBlank() || marca.isBlank() || tipo == null || tipo.equals("Seleccione el tipo....")  || tipoBici.equals("Elegir")) {
+            JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos"); return; }
+             if (Placa.length() != 6) { JOptionPane.showMessageDialog(this, "La placa debe tener exactamente 6 caracteres"); return;}
+// Se almacenan 
+        boolean registroExitoso = false;
+        try {
+              switch (tipo) {
             case "Carro" -> { try { int numeroDePuertas = Integer.parseInt(txtAtributoExtra1.getText());
+                if (numeroDePuertas < 2 || numeroDePuertas > 5 ) { JOptionPane.showMessageDialog(this, "El munero de puertas debe estar entre 2 y 5:");}
                  MenuOpciones.registrarVehiculo.add(new Carro(marca ,Placa , tipo,horaEntrada ,null ,numeroDePuertas));
                            } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puertas Invalido");}}
             case "Bicicleta" -> { try { int cambios = Integer.parseInt(txtAtributoExtra1.getText());
-                   String tipoBici = txtAtributoExtra2.getText();
                  MenuOpciones.registrarVehiculo.add(new Bicicleta(marca ,Placa ,tipo ,horaEntrada,null ,cambios,tipoBici )); }catch (NumberFormatException e) {}}
             case "Motocicleta" -> {
                        int cilindrada = Integer.parseInt(txtAtributoExtra2.getText());
@@ -224,11 +244,17 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                 } while (!tieneSidecar.equalsIgnoreCase("Si") && !tieneSidecar.equalsIgnoreCase("No"));
                         Boolean sidecar = tieneSidecar.equalsIgnoreCase("Si")? true : false;    
                         MenuOpciones.registrarVehiculo.add(new Moto(marca, Placa,tipo, horaEntrada, null,cilindrada, sidecar));
+                        
                  }
             case "Camion" -> { int ejes = Integer.parseInt(txtAtributoExtra1.getText());
-                MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); } }
-                // Mensaje al usuario despues de registrar correctamente
-                JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
+                MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); 
+            registroExitoso= true; } }
+        } catch (NumberFormatException e) {JOptionPane.showConfirmDialog(this, "Error en el formato"); return; }
+         // Mensaje al usuario despues de registrar correctamente
+        if (registroExitoso) {
+             JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
+        }
+           limpiarCasillas();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
@@ -243,6 +269,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                           txtAtributoExtra1.setVisible(false);
                           lblAtributosVehiculoExtra2.setVisible(false);
                           txtAtributoExtra2.setVisible(false);
+                          cmbTiposDeBici.setVisible(false);
             }
             case "Carro" -> { lblAtributosVehiculoExtra1.setText("Numero de Puertas:");
                           txtAtributoExtra1.getText(); 
@@ -250,6 +277,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                           txtAtributoExtra1.setVisible(true);
                           lblAtributosVehiculoExtra2.setVisible(false);
                           txtAtributoExtra2.setVisible(false);
+                          cmbTiposDeBici.setVisible(false);
             }
             case "Bicicleta" -> {lblAtributosVehiculoExtra1.setText("Cambios: ");
                             txtAtributoExtra1.getText();
@@ -258,7 +286,8 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                             lblAtributosVehiculoExtra1.setVisible(true);
                             txtAtributoExtra1.setVisible(true);
                             lblAtributosVehiculoExtra2.setVisible(true);
-                            txtAtributoExtra2.setVisible(true);
+                            txtAtributoExtra2.setVisible(false);
+                            cmbTiposDeBici.setVisible(true);
             }
             case "Motocicleta" -> {lblAtributosVehiculoExtra1.setText("tiene Sidecar (SI/NO): ");
                             txtAtributoExtra1.getText();
@@ -268,7 +297,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                             txtAtributoExtra1.setVisible(true);
                             lblAtributosVehiculoExtra2.setVisible(true);
                             txtAtributoExtra2.setVisible(true);
-                            
+                            cmbTiposDeBici.setVisible(false);
             }
             case "Camion" -> {lblAtributosVehiculoExtra1.setText("numero de ejes:");
                             txtAtributoExtra1.getText(); 
@@ -276,9 +305,12 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                             txtAtributoExtra1.setVisible(true);
                             lblAtributosVehiculoExtra2.setVisible(false); 
                             txtAtributoExtra2.setVisible(false);
+                            cmbTiposDeBici.setVisible(false);
             }
             default -> {lblAtributosVehiculoExtra1.setText("");
-                     lblAtributosVehiculoExtra2.setText("");        }}
+                     lblAtributosVehiculoExtra2.setText(""); 
+                      cmbTiposDeBici.setVisible(false);
+}}
     }//GEN-LAST:event_cmdOpcionVehiculosActionPerformed
 
     private void txtAtributoExtra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtributoExtra1ActionPerformed
@@ -294,15 +326,32 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
     }//GEN-LAST:event_txtHoraEntradaActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-       MenuOpciones menu = new MenuOpciones();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void cmbTiposDeBiciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTiposDeBiciActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTiposDeBiciActionPerformed
+    // Limpiar y restablecer cada casilla, atributos generales y especificos
+    public void limpiarCasillas(){
+    txtMarca.setText("");
+    txtPlaca.setText("");
+    LocalDateTime horaEntrada = LocalDateTime.now();
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    txtHoraEntrada.setText(horaEntrada.format(formato));
+    txtAtributoExtra1.setText("");
+    txtAtributoExtra2.setText("");
+    cmbTiposDeBici.setSelectedItem("Elegir");
+    cmdOpcionVehiculos.setSelectedItem("Seleccione el tipo....");
+   
+    }//fin deL metodo que limpia las casillas
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+      
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -329,7 +378,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroEntrada().setVisible(true);
+                new MenuOpciones().setVisible(true);
             }
         });
     }
@@ -337,6 +386,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JComboBox<String> cmbTiposDeBici;
     private javax.swing.JComboBox<String> cmdOpcionVehiculos;
     private javax.swing.JLabel lblAtributosVehiculoExtra1;
     private javax.swing.JLabel lblAtributosVehiculoExtra2;
