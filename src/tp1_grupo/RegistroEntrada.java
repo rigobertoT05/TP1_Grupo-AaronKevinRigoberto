@@ -27,7 +27,7 @@ private MenuOpciones menu;
     txtAtributoExtra1.setVisible(false);
     txtAtributoExtra2.setVisible(false);
     setLocationRelativeTo(null);
-    
+    cmbTiposDeBici.setVisible(false);
     }
 
     /**
@@ -54,6 +54,7 @@ private MenuOpciones menu;
         lblHoraEntrada = new javax.swing.JLabel();
         txtHoraEntrada = new javax.swing.JTextField();
         btnRegresar = new javax.swing.JButton();
+        cmbTiposDeBici = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -122,6 +123,13 @@ private MenuOpciones menu;
             }
         });
 
+        cmbTiposDeBici.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir", "Montaña", "Ruta", "BiciMoto", "Urbuna", "Eléctrica", "Híbrida", "BMX", " " }));
+        cmbTiposDeBici.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTiposDeBiciActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,11 +152,9 @@ private MenuOpciones menu;
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(lblAtributosVehiculoExtra1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtAtributoExtra1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-                    .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(lblPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,7 +167,13 @@ private MenuOpciones menu;
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblPlaca1)
                         .addGap(18, 18, 18)
-                        .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbTiposDeBici, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,7 +202,9 @@ private MenuOpciones menu;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAtributoExtra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
-                .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTiposDeBici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
@@ -205,19 +219,21 @@ private MenuOpciones menu;
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
+        String tipoBici = (String) cmbTiposDeBici.getSelectedItem();
         String tieneSidecar;
         String marca = txtMarca.getText(); 
         String Placa = txtPlaca.getText().trim().toLowerCase();
-        if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.equals("Seleccione el tipo....")) {
+        if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.equals("Seleccione el tipo....")  || tipoBici.equals("Elegir")) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos");
-            return;
-        }       // Se almacenan 
+        }    
+        if (Placa.length() != 6) { JOptionPane.showMessageDialog(this, "La placa debe tener exactamente 6 caracteres");}
+// Se almacenan 
         switch (tipo) {
             case "Carro" -> { try { int numeroDePuertas = Integer.parseInt(txtAtributoExtra1.getText());
+                if (numeroDePuertas < 2 || numeroDePuertas > 5 ) { JOptionPane.showMessageDialog(this, "El munero de puertas debe estar entre 2 y 5:");}
                  MenuOpciones.registrarVehiculo.add(new Carro(marca ,Placa , tipo,horaEntrada ,null ,numeroDePuertas));
                            } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puertas Invalido");}}
             case "Bicicleta" -> { try { int cambios = Integer.parseInt(txtAtributoExtra1.getText());
-                   String tipoBici = txtAtributoExtra2.getText();
                  MenuOpciones.registrarVehiculo.add(new Bicicleta(marca ,Placa ,tipo ,horaEntrada,null ,cambios,tipoBici )); }catch (NumberFormatException e) {}}
             case "Motocicleta" -> {
                        int cilindrada = Integer.parseInt(txtAtributoExtra2.getText());
@@ -231,7 +247,6 @@ private MenuOpciones menu;
                 MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); } }
                 // Mensaje al usuario despues de registrar correctamente
                 JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
-                
            limpiarCasillas();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -247,6 +262,7 @@ private MenuOpciones menu;
                           txtAtributoExtra1.setVisible(false);
                           lblAtributosVehiculoExtra2.setVisible(false);
                           txtAtributoExtra2.setVisible(false);
+                          cmbTiposDeBici.setVisible(false);
             }
             case "Carro" -> { lblAtributosVehiculoExtra1.setText("Numero de Puertas:");
                           txtAtributoExtra1.getText(); 
@@ -254,6 +270,7 @@ private MenuOpciones menu;
                           txtAtributoExtra1.setVisible(true);
                           lblAtributosVehiculoExtra2.setVisible(false);
                           txtAtributoExtra2.setVisible(false);
+                          cmbTiposDeBici.setVisible(false);
             }
             case "Bicicleta" -> {lblAtributosVehiculoExtra1.setText("Cambios: ");
                             txtAtributoExtra1.getText();
@@ -262,7 +279,8 @@ private MenuOpciones menu;
                             lblAtributosVehiculoExtra1.setVisible(true);
                             txtAtributoExtra1.setVisible(true);
                             lblAtributosVehiculoExtra2.setVisible(true);
-                            txtAtributoExtra2.setVisible(true);
+                            txtAtributoExtra2.setVisible(false);
+                            cmbTiposDeBici.setVisible(true);
             }
             case "Motocicleta" -> {lblAtributosVehiculoExtra1.setText("tiene Sidecar (SI/NO): ");
                             txtAtributoExtra1.getText();
@@ -272,7 +290,7 @@ private MenuOpciones menu;
                             txtAtributoExtra1.setVisible(true);
                             lblAtributosVehiculoExtra2.setVisible(true);
                             txtAtributoExtra2.setVisible(true);
-                            
+                            cmbTiposDeBici.setVisible(false);
             }
             case "Camion" -> {lblAtributosVehiculoExtra1.setText("numero de ejes:");
                             txtAtributoExtra1.getText(); 
@@ -280,9 +298,12 @@ private MenuOpciones menu;
                             txtAtributoExtra1.setVisible(true);
                             lblAtributosVehiculoExtra2.setVisible(false); 
                             txtAtributoExtra2.setVisible(false);
+                            cmbTiposDeBici.setVisible(false);
             }
             default -> {lblAtributosVehiculoExtra1.setText("");
-                     lblAtributosVehiculoExtra2.setText("");        }}
+                     lblAtributosVehiculoExtra2.setText(""); 
+                      cmbTiposDeBici.setVisible(false);
+}}
     }//GEN-LAST:event_cmdOpcionVehiculosActionPerformed
 
     private void txtAtributoExtra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtributoExtra1ActionPerformed
@@ -302,8 +323,12 @@ private MenuOpciones menu;
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void limpiarCasillas(){
-    // limpia o reinicia cada casillla
+    private void cmbTiposDeBiciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTiposDeBiciActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTiposDeBiciActionPerformed
+
+    public void limpiarCasillas(){
+    
     txtMarca.setText("");
     txtPlaca.setText("");
     LocalDateTime horaEntrada = LocalDateTime.now();
@@ -353,6 +378,7 @@ private MenuOpciones menu;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JComboBox<String> cmbTiposDeBici;
     private javax.swing.JComboBox<String> cmdOpcionVehiculos;
     private javax.swing.JLabel lblAtributosVehiculoExtra1;
     private javax.swing.JLabel lblAtributosVehiculoExtra2;
