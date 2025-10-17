@@ -32,6 +32,8 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         configurarTabla();
         configurarComboBox();
         setLocationRelativeTo(null);
+        tblMostrarDatos.getTableHeader().setReorderingAllowed(false);
+        tblMostrarDatos.getTableHeader().setResizingAllowed(false);
     }
     private void configurarComboBox() {
         // Crea modelo de comboBox de 24 items para las horas
