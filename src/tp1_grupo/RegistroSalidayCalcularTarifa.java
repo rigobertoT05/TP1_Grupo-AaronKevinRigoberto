@@ -36,6 +36,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     private void configurarComboBox() {
         // Crea modelo de comboBox de 24 items para las horas
         cmbHoraSalida.removeAllItems();
+        cmbHoraSalida.addItem("Elegir");
         for (int i = 0; i < 24; i++) {
             cmbHoraSalida.addItem(String.format("%02d:00", i)); 
         }
@@ -323,37 +324,26 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlacaActionPerformed
 
     private void btnConfirmarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarSalidaActionPerformed
-       
-        
-     
-        if (vehiculoEncontrado == null) {
-        JOptionPane.showMessageDialog(this,
-            "Primero debe buscar un vehículo","Error",JOptionPane.ERROR_MESSAGE);}
-    if (cmbHoraSalida.getSelectedItem() == null) {
-        JOptionPane.showMessageDialog(this,
-            "Debe seleccionar una hora de salida",
-            "Campo vacío",
-            JOptionPane.WARNING_MESSAGE);}
+    if (vehiculoEncontrado == null) {JOptionPane.showMessageDialog(this,"Primero debe buscar un vehículo","Error",JOptionPane.ERROR_MESSAGE); return; }
+    
+    String horaSalidaSeleccionada = (String) cmbHoraSalida.getSelectedItem();
+    
+    if ((horaSalidaSeleccionada == null)|| horaSalidaSeleccionada.equals("Elegir")) {JOptionPane.showMessageDialog(this,"Debe seleccionar una hora de salida","Campo vacío",JOptionPane.WARNING_MESSAGE); return;}
+    
     try {
         // Definir y establecer hora seleccionada
-        String horaSalidaSeleccionada = (String) cmbHoraSalida.getSelectedItem();
         LocalTime horaSalida = LocalTime.parse(horaSalidaSeleccionada); 
         LocalDate fechaHoy = LocalDate.now();
-        LocalDateTime horaSalidaFinal = LocalDateTime.of(fechaHoy, horaSalida); 
-        if (horaSalidaSeleccionada.equals("00:00")) {
-           JOptionPane.showConfirmDialog(this, "Por favor, Seleccione una hora de salida válida"); return;
-        }
+        LocalDateTime horaSalidaFinal = LocalDateTime.of(fechaHoy, horaSalida);
         
-        // Validar que la hora de salida sea mayor la entrada
         if (!horaSalidaFinal.isAfter(vehiculoEncontrado.getHoraEntrada())) {
-            JOptionPane.showMessageDialog(this,
-                "La hora de salida debe ser posterior a la hora de entrada.", "Hora inválida", JOptionPane.ERROR_MESSAGE);}
-        
-        
+           JOptionPane.showConfirmDialog(this, "Ingresa una hora posterior a la hora entrada"); return;}
+                
         vehiculoEncontrado.setHoraSalida(horaSalidaFinal);
         
         // Llamar metodo calcular Tarifa y eliminar objeto
         double tarifa = vehiculoEncontrado.calcularTarifa();
+        
         int respuesta = JOptionPane.showConfirmDialog(this,
             "¿Confirmar salida del vehículo?\n\n" +
             "Placa: " + vehiculoEncontrado.getPlaca() + "\n" +
