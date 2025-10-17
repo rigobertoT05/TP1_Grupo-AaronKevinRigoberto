@@ -35,6 +35,7 @@ public class ReporteIngresos extends javax.swing.JFrame {
                 return false;
             }
         };
+        // Ajustar ancho de columnas
         tblIngresos.setModel(modelo);
         tblIngresos.getColumnModel().getColumn(0).setPreferredWidth(120);
         tblIngresos.getColumnModel().getColumn(1).setPreferredWidth(80);
