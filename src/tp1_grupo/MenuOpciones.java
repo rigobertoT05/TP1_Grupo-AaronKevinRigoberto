@@ -167,7 +167,8 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReporteIngresosGeneradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteIngresosGeneradosActionPerformed
-        // TODO add your handling code here:
+        ReporteIngresos reporte = new ReporteIngresos();
+        reporte.setVisible(true);
     }//GEN-LAST:event_btnReporteIngresosGeneradosActionPerformed
 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
