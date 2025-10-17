@@ -26,6 +26,7 @@ private MenuOpciones menu;
     txtHoraEntrada.setText(horaEntrada.format(formato));
     txtAtributoExtra1.setVisible(false);
     txtAtributoExtra2.setVisible(false);
+    setLocationRelativeTo(null);
     
     }
 
