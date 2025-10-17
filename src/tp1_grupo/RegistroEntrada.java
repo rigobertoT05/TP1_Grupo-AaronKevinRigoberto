@@ -221,7 +221,7 @@ public static LocalDateTime horaEntrada = LocalDateTime.now();
                            } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puertas Invalido");}}
             case "Bicicleta" -> { try { int cambios = Integer.parseInt(txtAtributoExtra1.getText());
                    String tipoBici = txtAtributoExtra2.getText();
-                 MenuOpciones.registrarVehiculo.add(new Bicibleta(marca ,Placa ,tipo ,horaEntrada,null ,cambios,tipoBici )); }catch (NumberFormatException e) {}}
+                 MenuOpciones.registrarVehiculo.add(new Bicicleta(marca ,Placa ,tipo ,horaEntrada,null ,cambios,tipoBici )); }catch (NumberFormatException e) {}}
             case "Motocicleta" -> {
                        int cilindrada = Integer.parseInt(txtAtributoExtra2.getText());
                         do {
