@@ -243,16 +243,15 @@
     <Component class="javax.swing.JComboBox" name="cmbTiposDeBici">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="9">
+          <StringArray count="8">
             <StringItem index="0" value="Elegir"/>
             <StringItem index="1" value="Monta&#xf1;a"/>
             <StringItem index="2" value="Ruta"/>
             <StringItem index="3" value="BiciMoto"/>
             <StringItem index="4" value="Urbuna"/>
-            <StringItem index="5" value="El&#xe9;ctrica"/>
-            <StringItem index="6" value="H&#xed;brida"/>
-            <StringItem index="7" value="BMX"/>
-            <StringItem index="8" value=" "/>
+            <StringItem index="5" value="H&#xed;brida"/>
+            <StringItem index="6" value="BMX"/>
+            <StringItem index="7" value=" "/>
           </StringArray>
         </Property>
       </Properties>

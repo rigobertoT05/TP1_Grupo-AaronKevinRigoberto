@@ -118,7 +118,7 @@ private MenuOpciones menu;
             }
         });
 
-        cmbTiposDeBici.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir", "Montaña", "Ruta", "BiciMoto", "Urbuna", "Eléctrica", "Híbrida", "BMX", " " }));
+        cmbTiposDeBici.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir", "Montaña", "Ruta", "BiciMoto", "Urbuna", "Híbrida", "BMX", " " }));
         cmbTiposDeBici.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTiposDeBiciActionPerformed(evt);
