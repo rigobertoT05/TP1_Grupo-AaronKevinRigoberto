@@ -340,7 +340,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         LocalDateTime horaSalidaFinal = LocalDateTime.of(fechaHoy, horaSalida);
         
         if (!horaSalidaFinal.isAfter(vehiculoEncontrado.getHoraEntrada())) {
-           JOptionPane.showConfirmDialog(this, "Ingresa una hora posterior a la hora entrada"); return;}
+           JOptionPane.showMessageDialog(this,"Ingresa una hora posterior a la hora entrada"); return;}
                 
         vehiculoEncontrado.setHoraSalida(horaSalidaFinal);
         
