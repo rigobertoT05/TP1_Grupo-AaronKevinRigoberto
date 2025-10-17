@@ -27,6 +27,9 @@ public class VehiculosParqueo extends javax.swing.JFrame {
         configurarTabla();
         cargarVehiculos();
         setLocationRelativeTo(null);
+        tblListaDeVehiculosParqueados.getTableHeader().setReorderingAllowed(false);
+        tblListaDeVehiculosParqueados.getTableHeader().setResizingAllowed(false);
+//        tblListaDeVehiculosParqueados.getTableHeader().setResizingColumn(false);
     }
 
     private void configurarTabla(){
@@ -38,11 +41,11 @@ public class VehiculosParqueo extends javax.swing.JFrame {
             return false;
             }
         };
-        jTable1.setModel(modeloTabla);
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(80);
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
-        jTable1.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tblListaDeVehiculosParqueados.setModel(modeloTabla);
+        tblListaDeVehiculosParqueados.getColumnModel().getColumn(0).setPreferredWidth(80);
+        tblListaDeVehiculosParqueados.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblListaDeVehiculosParqueados.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tblListaDeVehiculosParqueados.getColumnModel().getColumn(3).setPreferredWidth(150);
     }
     private void cargarVehiculos() {
         modeloTabla.setRowCount(0);
@@ -73,7 +76,7 @@ public class VehiculosParqueo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblListaDeVehiculosParqueados = new javax.swing.JTable();
         btnRegresar = new java.awt.Button();
         btnLimpiar = new java.awt.Button();
 
@@ -83,7 +86,7 @@ public class VehiculosParqueo extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Vehiculos parqueados");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaDeVehiculosParqueados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,7 +109,7 @@ public class VehiculosParqueo extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblListaDeVehiculosParqueados);
 
         btnRegresar.setLabel("Regresar");
         btnRegresar.setName(""); // NOI18N
@@ -211,6 +214,6 @@ public class VehiculosParqueo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblListaDeVehiculosParqueados;
     // End of variables declaration//GEN-END:variables
 }
