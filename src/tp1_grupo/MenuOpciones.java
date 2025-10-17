@@ -228,19 +228,4 @@ public class MenuOpciones extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 
-/*class FondoPanel extends JPanel 
-{
-    private Image imagen;
-            
-    @Override
-           public void paint(Graphics g) {
-               
-           imagen = new ImageIcon(getClass().getResource("/Imagenes/fondo1.jpg")).getImage();
-           
-           g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-           
-//           setOpaque(false);
-           
-           super.paint(g);
-           }
-            } */
+
