@@ -28,6 +28,7 @@ private MenuOpciones menu;
     txtAtributoExtra2.setVisible(false);
     setLocationRelativeTo(null);
     cmbTiposDeBici.setVisible(false);
+    txtHoraEntrada.setEditable(false);
     }
 
     /**
@@ -224,7 +225,7 @@ private MenuOpciones menu;
         String tieneSidecar;
         String marca = txtMarca.getText(); 
         String Placa = txtPlaca.getText().trim().toLowerCase();
-        if (Placa.isBlank() || marca.isBlank() || tipo == null || tipo.equals("Seleccione el tipo....")  || tipoBici.equals("Elegir")) {
+        if (Placa.isBlank() || marca.isBlank() || tipo.equals("Seleccione el tipo....")) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos"); return; }
              if (Placa.length() != 6) { JOptionPane.showMessageDialog(this, "La placa debe tener exactamente 6 caracteres"); return;}
 // Se almacenan 
@@ -232,11 +233,14 @@ private MenuOpciones menu;
         try {
               switch (tipo) {
             case "Carro" -> { try { int numeroDePuertas = Integer.parseInt(txtAtributoExtra1.getText());
-                if (numeroDePuertas < 2 || numeroDePuertas > 5 ) { JOptionPane.showMessageDialog(this, "El munero de puertas debe estar entre 2 y 5:");}
-                 MenuOpciones.registrarVehiculo.add(new Carro(marca ,Placa , tipo,horaEntrada ,null ,numeroDePuertas));
+                if (numeroDePuertas < 2 || numeroDePuertas > 5 ) { JOptionPane.showMessageDialog(this, "El munero de puertas debe estar entre 2 y 5:"); return;}
+                 MenuOpciones.registrarVehiculo.add(new Carro(marca ,Placa , tipo,horaEntrada ,null ,numeroDePuertas)) ;
                            } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puertas Invalido");}}
-            case "Bicicleta" -> { try { int cambios = Integer.parseInt(txtAtributoExtra1.getText());
-                 MenuOpciones.registrarVehiculo.add(new Bicicleta(marca ,Placa ,tipo ,horaEntrada,null ,cambios,tipoBici )); }catch (NumberFormatException e) {}}
+            case "Bicicleta" -> { 
+                    if (tipoBici.equals("Elegir")) {
+                    int cambios = Integer.parseInt(txtAtributoExtra1.getText());
+                     MenuOpciones.registrarVehiculo.add(new Bicicleta(marca ,Placa ,tipo ,horaEntrada,null ,cambios,tipoBici ));
+                     {JOptionPane.showMessageDialog(this, "Elegir un tipo de Bicicleta");}}}
             case "Motocicleta" -> {
                        int cilindrada = Integer.parseInt(txtAtributoExtra2.getText());
                         do {
