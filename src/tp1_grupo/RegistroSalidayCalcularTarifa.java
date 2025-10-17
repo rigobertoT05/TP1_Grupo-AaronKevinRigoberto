@@ -25,9 +25,11 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     private Vehiculo vehiculoEncontrado = null;
+    private MenuOpciones menu;
 
-    public RegistroSalidayCalcularTarifa() {
+    public RegistroSalidayCalcularTarifa(MenuOpciones menu) {
         initComponents();
+        this.menu = menu;
         configurarTabla();
         configurarComboBox();
         setLocationRelativeTo(null);
@@ -265,7 +267,6 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        MenuOpciones menu = new MenuOpciones();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
@@ -415,7 +416,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroSalidayCalcularTarifa().setVisible(true);
+                new MenuOpciones().setVisible(true);
             }
         });
     }
