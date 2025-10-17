@@ -246,7 +246,6 @@ private MenuOpciones menu;
                 } while (!tieneSidecar.equalsIgnoreCase("Si") && !tieneSidecar.equalsIgnoreCase("No"));
                         Boolean sidecar = tieneSidecar.equalsIgnoreCase("Si")? true : false;    
                         MenuOpciones.registrarVehiculo.add(new Moto(marca, Placa,tipo, horaEntrada, null,cilindrada, sidecar));
-                        
                  }
             case "Camion" -> { int ejes = Integer.parseInt(txtAtributoExtra1.getText());
                 MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); 
