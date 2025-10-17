@@ -231,6 +231,8 @@ private MenuOpciones menu;
                 MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); } }
                 // Mensaje al usuario despues de registrar correctamente
                 JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
+                
+           limpiarCasillas();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
@@ -300,10 +302,23 @@ private MenuOpciones menu;
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    public void limpiarCasillas(){
+    
+    txtMarca.setText("");
+    txtPlaca.setText("");
+   LocalDateTime horaEntrada = LocalDateTime.now();
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    txtHoraEntrada.setText(horaEntrada.format(formato));
+    txtAtributoExtra1.setText("");
+    txtAtributoExtra2.setText("");
+   
+    }//fin deL metodo que limpia las casillas
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+      
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
