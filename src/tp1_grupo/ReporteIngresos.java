@@ -52,7 +52,7 @@ public class ReporteIngresos extends javax.swing.JFrame {
 
         // Recorrer todos los vehículos registrados
         for (Vehiculo v : registrarVehiculo) {
-            String tipo = v.toString();
+            String tipo = v.obtenerTipo();
             cantidadPorTipo.put(tipo, cantidadPorTipo.getOrDefault(tipo, 0) + 1);
              double tarifa = v.calcularTarifa();
             ingresoPorTipo.put(tipo, ingresoPorTipo.getOrDefault(tipo, 0.0) + tarifa);
