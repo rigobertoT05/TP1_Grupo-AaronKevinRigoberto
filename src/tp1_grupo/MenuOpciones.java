@@ -4,9 +4,11 @@
  */
 package tp1_grupo;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import javax.swing.*;
 /**
  *
  * @author rigoberto
@@ -14,12 +16,14 @@ import java.util.ArrayList;
 public class MenuOpciones extends javax.swing.JFrame {
 public static ArrayList<Vehiculo> registrarVehiculo = new ArrayList<>();
 static BufferedReader entrada = new BufferedReader (new InputStreamReader(System.in));
-
+//FondoPanel fondo = new FondoPanel();
     /**
      * Creates new form MenuOpciones
      */
     public MenuOpciones() {
         initComponents();
+        setLocationRelativeTo(null);
+//        this.setContentPane(fondo);
     }
     
     /**
@@ -31,82 +35,26 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
-        jPanel2 = new javax.swing.JPanel();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
-        lbl_MensajeBienvenida = new javax.swing.JLabel();
-        btnEntrada = new javax.swing.JButton();
+        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
         btnRegistraSalidaYCalculaTarifa = new javax.swing.JButton();
+        lbl_MensajeBienvenida = new javax.swing.JLabel();
         btnListaDeVehiculos = new javax.swing.JButton();
+        btnEntrada = new javax.swing.JButton();
         btnReporteIngresosGenerados = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jInternalFrame1.setVisible(true);
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jInternalFrame2.setVisible(true);
-
-        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
-        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
-        jInternalFrame2Layout.setHorizontalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jInternalFrame2Layout.setVerticalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        lblSeleccionOpcion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setSize(new java.awt.Dimension(0, 0));
         addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 formComponentAdded(evt);
             }
         });
 
-        lbl_MensajeBienvenida.setText("Parqueo Vehicular Sol Dorado");
-
-        btnEntrada.setText("Registrar Entrada");
-        btnEntrada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntradaActionPerformed(evt);
-            }
-        });
-
+        btnRegistraSalidaYCalculaTarifa.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistraSalidaYCalculaTarifa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRegistraSalidaYCalculaTarifa.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistraSalidaYCalculaTarifa.setText("Registrar Salida y calcular Tarifa");
         btnRegistraSalidaYCalculaTarifa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +62,15 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
             }
         });
 
+        lbl_MensajeBienvenida.setBackground(new java.awt.Color(0, 0, 0));
+        lbl_MensajeBienvenida.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        lbl_MensajeBienvenida.setForeground(java.awt.Color.black);
+        lbl_MensajeBienvenida.setText("Parqueo Vehicular");
+        lbl_MensajeBienvenida.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        btnListaDeVehiculos.setBackground(new java.awt.Color(255, 255, 255));
+        btnListaDeVehiculos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnListaDeVehiculos.setForeground(new java.awt.Color(0, 0, 0));
         btnListaDeVehiculos.setText("Vehiculos en el parqueo");
         btnListaDeVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +78,19 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
             }
         });
 
+        btnEntrada.setBackground(new java.awt.Color(255, 255, 255));
+        btnEntrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEntrada.setForeground(new java.awt.Color(0, 0, 0));
+        btnEntrada.setText("Registrar Entrada");
+        btnEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntradaActionPerformed(evt);
+            }
+        });
+
+        btnReporteIngresosGenerados.setBackground(new java.awt.Color(255, 255, 255));
+        btnReporteIngresosGenerados.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnReporteIngresosGenerados.setForeground(new java.awt.Color(0, 0, 0));
         btnReporteIngresosGenerados.setText(" Reporte de ingresos generados ");
         btnReporteIngresosGenerados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,54 +98,71 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
             }
         });
 
-        jLabel1.setText("Seleccione la opcion que desea");
+        lblSeleccionOpcion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblSeleccionOpcion.setForeground(new java.awt.Color(0, 0, 0));
+        lblSeleccionOpcion.setText("Seleccione Una Opcion");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblSeleccionOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnReporteIngresosGenerados, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRegistraSalidaYCalculaTarifa)
+                            .addComponent(btnListaDeVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbl_MensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(181, 181, 181))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(lbl_MensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSeleccionOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistraSalidaYCalculaTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReporteIngresosGenerados, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListaDeVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(btnEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRegistraSalidaYCalculaTarifa))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(btnListaDeVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(btnReporteIngresosGenerados))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(lbl_MensajeBienvenida))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_MensajeBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistraSalidaYCalculaTarifa)
-                    .addComponent(btnEntrada))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnListaDeVehiculos)
-                    .addComponent(btnReporteIngresosGenerados))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRegistraSalidaYCalculaTarifaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistraSalidaYCalculaTarifaActionPerformed
-       RegistroSalidayCalcularTarifa registroSalida = new RegistroSalidayCalcularTarifa();
-       registroSalida.setVisible(true);
-    }//GEN-LAST:event_btnRegistraSalidaYCalculaTarifaActionPerformed
 
     private void btnReporteIngresosGeneradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteIngresosGeneradosActionPerformed
         // TODO add your handling code here:
@@ -185,15 +172,20 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
        // TODO add your handling code here:
     }//GEN-LAST:event_formComponentAdded
 
-    private void btnEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradaActionPerformed
-        RegistroEntrada registro = new RegistroEntrada();
-        registro.setVisible(true);   // TODO add your handling code here:
-    }//GEN-LAST:event_btnEntradaActionPerformed
-
     private void btnListaDeVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaDeVehiculosActionPerformed
        VehiculosParqueo parqueo = new VehiculosParqueo(registrarVehiculo);
        parqueo.setVisible(true);
     }//GEN-LAST:event_btnListaDeVehiculosActionPerformed
+
+    private void btnRegistraSalidaYCalculaTarifaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistraSalidaYCalculaTarifaActionPerformed
+//        RegistroSalidayCalcularTarifa registroSalida = new RegistroSalidayCalcularTarifa();
+////        RegistroSalidayCalcularTarifa.setVisible(true);
+    }//GEN-LAST:event_btnRegistraSalidaYCalculaTarifaActionPerformed
+
+    private void btnEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradaActionPerformed
+        RegistroEntrada registro = new RegistroEntrada();
+        registro.setVisible(true);   // TODO add your handling code here:
+    }//GEN-LAST:event_btnEntradaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,12 +227,24 @@ static BufferedReader entrada = new BufferedReader (new InputStreamReader(System
     private javax.swing.JButton btnListaDeVehiculos;
     private javax.swing.JButton btnRegistraSalidaYCalculaTarifa;
     private javax.swing.JButton btnReporteIngresosGenerados;
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JInternalFrame jInternalFrame2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblSeleccionOpcion;
     private javax.swing.JLabel lbl_MensajeBienvenida;
     // End of variables declaration//GEN-END:variables
 }
+
+/*class FondoPanel extends JPanel 
+{
+    private Image imagen;
+            
+    @Override
+           public void paint(Graphics g) {
+               
+           imagen = new ImageIcon(getClass().getResource("/Imagenes/fondo1.jpg")).getImage();
+           
+           g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+           
+//           setOpaque(false);
+           
+           super.paint(g);
+           }
+            } */

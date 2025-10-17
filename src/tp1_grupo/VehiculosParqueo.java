@@ -23,6 +23,7 @@ public class VehiculosParqueo extends javax.swing.JFrame {
         this.registrarVehiculo = lista;
         configurarTabla();
         cargarVehiculos();
+        setLocationRelativeTo(null);
     }
 
     private void configurarTabla(){
@@ -39,7 +40,6 @@ public class VehiculosParqueo extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
         jTable1.getColumnModel().getColumn(3).setPreferredWidth(150);
-    
     }
     private void cargarVehiculos() {
         modeloTabla.setRowCount(0);
@@ -75,6 +75,7 @@ public class VehiculosParqueo extends javax.swing.JFrame {
         btnLimpiar = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Vehiculos parqueados");
@@ -188,7 +189,6 @@ public class VehiculosParqueo extends javax.swing.JFrame {
             }
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
         }
-        
         VehiculosParqueo parqueo = new VehiculosParqueo(MenuOpciones.registrarVehiculo);
         parqueo.setVisible(true);
         java.awt.EventQueue.invokeLater(() -> {
