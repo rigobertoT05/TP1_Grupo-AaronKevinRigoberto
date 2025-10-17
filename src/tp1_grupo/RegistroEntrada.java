@@ -225,8 +225,9 @@ private MenuOpciones menu;
         String Placa = txtPlaca.getText().trim().toLowerCase();
         if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.equals("Seleccione el tipo....")  || tipoBici.equals("Elegir")) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos");
-            return;
-        }       // Se almacenan 
+        }    
+        if (Placa.length() != 6) { JOptionPane.showMessageDialog(this, "La placa debe tener exactamente 6 caracteres");}
+// Se almacenan 
         switch (tipo) {
             case "Carro" -> { try { int numeroDePuertas = Integer.parseInt(txtAtributoExtra1.getText());
                 if (numeroDePuertas < 2 || numeroDePuertas > 5 ) { JOptionPane.showMessageDialog(this, "El munero de puertas debe estar entre 2 y 5:");}
@@ -246,7 +247,6 @@ private MenuOpciones menu;
                 MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); } }
                 // Mensaje al usuario despues de registrar correctamente
                 JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
-                
            limpiarCasillas();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -271,7 +271,6 @@ private MenuOpciones menu;
                           lblAtributosVehiculoExtra2.setVisible(false);
                           txtAtributoExtra2.setVisible(false);
                           cmbTiposDeBici.setVisible(false);
-
             }
             case "Bicicleta" -> {lblAtributosVehiculoExtra1.setText("Cambios: ");
                             txtAtributoExtra1.getText();
@@ -282,7 +281,6 @@ private MenuOpciones menu;
                             lblAtributosVehiculoExtra2.setVisible(true);
                             txtAtributoExtra2.setVisible(false);
                             cmbTiposDeBici.setVisible(true);
-
             }
             case "Motocicleta" -> {lblAtributosVehiculoExtra1.setText("tiene Sidecar (SI/NO): ");
                             txtAtributoExtra1.getText();
@@ -301,7 +299,6 @@ private MenuOpciones menu;
                             lblAtributosVehiculoExtra2.setVisible(false); 
                             txtAtributoExtra2.setVisible(false);
                             cmbTiposDeBici.setVisible(false);
-
             }
             default -> {lblAtributosVehiculoExtra1.setText("");
                      lblAtributosVehiculoExtra2.setText(""); 
