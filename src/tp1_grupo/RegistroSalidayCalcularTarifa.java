@@ -328,7 +328,8 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     
     String horaSalidaSeleccionada = (String) cmbHoraSalida.getSelectedItem();
     
-    if ((horaSalidaSeleccionada == null)|| horaSalidaSeleccionada.equals("Elegir")) {JOptionPane.showMessageDialog(this,"Debe seleccionar una hora de salida","Campo vacío",JOptionPane.WARNING_MESSAGE); return;}
+    if ((horaSalidaSeleccionada == null)|| horaSalidaSeleccionada.equals("Elegir")) 
+    {JOptionPane.showMessageDialog(this,"Debe seleccionar una hora de salida","Campo vacío",JOptionPane.WARNING_MESSAGE); return;}
     
     try {
         // Definir y establecer hora seleccionada
