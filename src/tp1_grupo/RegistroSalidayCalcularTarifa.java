@@ -13,10 +13,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import tp1_grupo.MenuOpciones;
+
 
 public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     /**
@@ -35,13 +34,14 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     private void configurarComboBox() {
+        // Crea modelo de comboBox de 24 items para las horas
         cmbHoraSalida.removeAllItems();
         for (int i = 0; i < 24; i++) {
             cmbHoraSalida.addItem(String.format("%02d:00", i)); 
         }
     }
     private void configurarTabla() {
-        // Crear modelo de tabla con columnas no editables
+        // Crea modelo de tabla con columnas no editables
         modeloTabla = new DefaultTableModel(
             new Object[]{"Placa", "Vehiculo", "Hora Entrada"}, 0
         ) {
@@ -265,6 +265,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       
         String placaBuscada = txtPlaca.getText().trim().toUpperCase();
 
         // Validar que se haya ingresado una placa
@@ -276,13 +277,14 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             txtPlaca.requestFocus();
             return;
         }
+        
         // Limpiar la tabla antes de buscar
         modeloTabla.setRowCount(0);
         vehiculoEncontrado = null;
         boolean encontrado = false;
+        
         // Buscar el vehículo en el ArrayList
         System.out.println("Vehicuos Diponibles para salida" + MenuOpciones.registrarVehiculo.size());
-
         for (Vehiculo v : MenuOpciones.registrarVehiculo) {
             if (v.getPlaca().equalsIgnoreCase(placaBuscada)) {
                 vehiculoEncontrado = v;
@@ -297,7 +299,8 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 modeloTabla.addRow(fila);
                 break;
             }
-        }
+        }//fin del for each que busca vehiculo
+        
         // Si no se encontró el vehículo
         if (!encontrado) {
             JOptionPane.showMessageDialog(this,
@@ -311,7 +314,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
                 "Vehículo encontrado",
                 "Éxito",
                 JOptionPane.INFORMATION_MESSAGE);
-        }//fin de la
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
@@ -319,7 +322,9 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlacaActionPerformed
 
     private void btnConfirmarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarSalidaActionPerformed
-    if (vehiculoEncontrado == null) {
+   
+        // Validar que se haya buscado un objeto vehiculo
+        if (vehiculoEncontrado == null) {
         JOptionPane.showMessageDialog(this,
             "Primero debe buscar un vehículo","Error",JOptionPane.ERROR_MESSAGE);}
     if (cmbHoraSalida.getSelectedItem() == null) {
@@ -333,13 +338,16 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
         LocalTime horaSalida = LocalTime.parse(horaSalidaSeleccionada); 
         LocalDate fechaHoy = LocalDate.now();
         LocalDateTime horaSalidaFinal = LocalDateTime.of(fechaHoy, horaSalida); 
+        
         // Validar que la hora de salida sea mayor la entrada
         if (!horaSalidaFinal.isAfter(vehiculoEncontrado.getHoraEntrada())) {
             JOptionPane.showMessageDialog(this,
                 "La hora de salida debe ser posterior a la hora de entrada.", "Hora inválida", JOptionPane.ERROR_MESSAGE);}
-        // Asignar hora de salida
+        
+        
         vehiculoEncontrado.setHoraSalida(horaSalidaFinal);
-        // Llamar metodo y calcular Tarifa
+        
+        // Llamar metodo calcular Tarifa y eliminar objeto
         double tarifa = vehiculoEncontrado.calcularTarifa();
         int respuesta = JOptionPane.showConfirmDialog(this,
             "¿Confirmar salida del vehículo?\n\n" +
@@ -372,8 +380,7 @@ public class RegistroSalidayCalcularTarifa extends javax.swing.JFrame {
             "Formato de hora inválido. Use HH:mm",
             "Error",
             JOptionPane.ERROR_MESSAGE);
-    }
-
+  }
     }//GEN-LAST:event_btnConfirmarSalidaActionPerformed
 
     private void cmbHoraSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbHoraSalidaActionPerformed
