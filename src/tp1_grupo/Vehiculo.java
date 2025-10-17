@@ -84,13 +84,7 @@ abstract class Vehiculo {
     public abstract String obtenerTipo();
     
     @Override
-    public String toString(){
-        return "Vehiculo{" +
-                "marca='" + marca + '\''+
-                ",placa='" + placa + '\''+
-                ", tipo='" + obtenerTipo() + '\'' + 
-                '}';
-    }
+    public abstract String toString();
     
     
 }    

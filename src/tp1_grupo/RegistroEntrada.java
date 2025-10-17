@@ -29,7 +29,6 @@ private MenuOpciones menu;
     cmbTiposDeBici.setVisible(false);
     txtHoraEntrada.setEditable(false);
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -234,7 +233,7 @@ private MenuOpciones menu;
                            } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puertas Invalido");}}
             case "Bicicleta" -> { 
                     if (tipoBici.equals("Elegir")) {
-                        {JOptionPane.showMessageDialog(this, "Elegir un tipo de Bicicleta");}}
+                        {JOptionPane.showMessageDialog(this, "Elegir un tipo de Bicicleta");} return; }
                     try {
                      int cambios = Integer.parseInt(txtAtributoExtra1.getText());
                      MenuOpciones.registrarVehiculo.add(new Bicicleta(marca ,Placa ,tipo ,horaEntrada,null ,cambios,tipoBici )); 
