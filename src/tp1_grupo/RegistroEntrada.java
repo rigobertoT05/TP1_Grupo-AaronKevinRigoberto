@@ -216,19 +216,21 @@ private MenuOpciones menu;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+  
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
+//        cmdOpcionVehiculos.getSelectedItem()
         String tipoBici = (String) cmbTiposDeBici.getSelectedItem();
         String tieneSidecar;
         String marca = txtMarca.getText(); 
         String Placa = txtPlaca.getText().trim().toLowerCase();
-        if (txtPlaca.getText().isBlank() || txtMarca.getText().isBlank() || txtHoraEntrada.getText().isBlank() || tipo == null || tipo.equals("Seleccione el tipo....")  || tipoBici.equals("Elegir")) {
-            JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos");
-        }    
-        if (Placa.length() != 6) { JOptionPane.showMessageDialog(this, "La placa debe tener exactamente 6 caracteres");}
+        if (Placa.isBlank() || marca.isBlank() || tipo == null || tipo.equals("Seleccione el tipo....")  || tipoBici.equals("Elegir")) {
+            JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos"); return; }
+             if (Placa.length() != 6) { JOptionPane.showMessageDialog(this, "La placa debe tener exactamente 6 caracteres"); return;}
 // Se almacenan 
-        switch (tipo) {
+        boolean registroExitoso = false;
+        try {
+              switch (tipo) {
             case "Carro" -> { try { int numeroDePuertas = Integer.parseInt(txtAtributoExtra1.getText());
                 if (numeroDePuertas < 2 || numeroDePuertas > 5 ) { JOptionPane.showMessageDialog(this, "El munero de puertas debe estar entre 2 y 5:");}
                  MenuOpciones.registrarVehiculo.add(new Carro(marca ,Placa , tipo,horaEntrada ,null ,numeroDePuertas));
@@ -242,11 +244,16 @@ private MenuOpciones menu;
                 } while (!tieneSidecar.equalsIgnoreCase("Si") && !tieneSidecar.equalsIgnoreCase("No"));
                         Boolean sidecar = tieneSidecar.equalsIgnoreCase("Si")? true : false;    
                         MenuOpciones.registrarVehiculo.add(new Moto(marca, Placa,tipo, horaEntrada, null,cilindrada, sidecar));
+                        
                  }
             case "Camion" -> { int ejes = Integer.parseInt(txtAtributoExtra1.getText());
-                MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); } }
-                // Mensaje al usuario despues de registrar correctamente
-                JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
+                MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); 
+            registroExitoso= true; } }
+        } catch (NumberFormatException e) {JOptionPane.showConfirmDialog(this, "Error en el formato"); return; }
+         // Mensaje al usuario despues de registrar correctamente
+        if (registroExitoso) {
+             JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
+        }
            limpiarCasillas();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -326,16 +333,17 @@ private MenuOpciones menu;
     private void cmbTiposDeBiciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTiposDeBiciActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTiposDeBiciActionPerformed
-
+    // Limpiar y restablecer cada casilla, atributos generales y especificos
     public void limpiarCasillas(){
-    
     txtMarca.setText("");
     txtPlaca.setText("");
-   LocalDateTime horaEntrada = LocalDateTime.now();
+    LocalDateTime horaEntrada = LocalDateTime.now();
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     txtHoraEntrada.setText(horaEntrada.format(formato));
     txtAtributoExtra1.setText("");
     txtAtributoExtra2.setText("");
+    cmbTiposDeBici.setSelectedItem("Elegir");
+    cmdOpcionVehiculos.setSelectedItem("Seleccione el tipo....");
    
     }//fin deL metodo que limpia las casillas
     
