@@ -302,11 +302,11 @@ private MenuOpciones menu;
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    public void limpiarCasillas(){
-    
+    private void limpiarCasillas(){
+    // limpia o reinicia cada casillla
     txtMarca.setText("");
     txtPlaca.setText("");
-   LocalDateTime horaEntrada = LocalDateTime.now();
+    LocalDateTime horaEntrada = LocalDateTime.now();
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     txtHoraEntrada.setText(horaEntrada.format(formato));
     txtAtributoExtra1.setText("");
