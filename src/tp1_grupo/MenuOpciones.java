@@ -14,7 +14,9 @@ import javax.swing.*;
  * @author rigoberto
  */
 public class MenuOpciones extends javax.swing.JFrame {
+    // Declaracion y Inicializacion del arraylist para guardar los atributos del Objeto 
     public static ArrayList<Vehiculo> registrarVehiculo = new ArrayList<>();
+    // Declaracion y Inicializacion del arraylist para almacenar el objeto para reporte ingresos
     public static ArrayList<Vehiculo> historialVehiculos = new ArrayList<>();
     static BufferedReader entrada = new BufferedReader (new InputStreamReader(System.in));
 //FondoPanel fondo = new FondoPanel();

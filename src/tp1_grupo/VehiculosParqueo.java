@@ -111,6 +111,9 @@ public class VehiculosParqueo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblListaDeVehiculosParqueados);
 
+        btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnRegresar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnRegresar.setLabel("Regresar");
         btnRegresar.setName(""); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +122,8 @@ public class VehiculosParqueo extends javax.swing.JFrame {
             }
         });
 
+        btnLimpiar.setBackground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnLimpiar.setLabel("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

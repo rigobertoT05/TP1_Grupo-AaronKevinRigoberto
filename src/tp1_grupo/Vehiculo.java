@@ -25,7 +25,7 @@ abstract class Vehiculo {
         this.horaSalida = horaSalida;
         this.tipo = tipo;
    
-    }
+    } // Metodo para redondear Minutos / ejemplo 1h.5m = 2h
     public long calcularHorasParqueo() {
         if (horaEntrada == null || horaSalida == null) {
             return 0;
@@ -76,16 +76,8 @@ abstract class Vehiculo {
     public void setHoraSalida(LocalDateTime horaSalida) {
         this.horaSalida = horaSalida;
     }
-    public double calcularTarifa(){
-    if (horaSalida == null){
-        return 0;
-    }
-    
-    long minutosTranscurridos = ChronoUnit.MINUTES.between(horaEntrada, horaSalida);
-    double horasTranscurridas = Math.ceil(minutosTranscurridos / 60.0);
-    
-    return obtenerTarifaHoraria() * horasTranscurridas;
-    }
+    // Metodo 
+    public abstract double calcularTarifa();
     
     public abstract double obtenerTarifaHoraria();
     
