@@ -17,7 +17,7 @@ abstract class Vehiculo {
     protected  LocalDateTime horaEntrada;
     protected LocalDateTime horaSalida;
 
-
+    //Constructor de la clase
     public Vehiculo(String marca, String placa, String tipo, LocalDateTime horaEntrada, LocalDateTime horaSalida) {
         this.marca = marca;
         this.placa = placa;
@@ -36,7 +36,7 @@ abstract class Vehiculo {
         return (bloques15min + 3) / 4;
     }
     
-    
+    //Getters y Setters
     public String getMarca() {
         return marca;
     }
