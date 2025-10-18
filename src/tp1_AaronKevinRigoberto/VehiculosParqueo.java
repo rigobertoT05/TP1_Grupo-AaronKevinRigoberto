@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package tp1_grupo;
+package tp1_AaronKevinRigoberto;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
-import tp1_grupo.MenuOpciones;
+import tp1_AaronKevinRigoberto.MenuOpciones;
 
 /**
  *

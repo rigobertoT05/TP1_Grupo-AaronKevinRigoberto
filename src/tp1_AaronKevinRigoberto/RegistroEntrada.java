@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package tp1_grupo;
+package tp1_AaronKevinRigoberto;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
