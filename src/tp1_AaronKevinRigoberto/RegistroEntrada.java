@@ -1,0 +1,404 @@
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package tp1_AaronKevinRigoberto;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+/**
+ *
+ * @author kevin
+ */
+public class RegistroEntrada extends javax.swing.JFrame {
+    // declaracion y inicializacion de la variable horaEntrada
+public static LocalDateTime horaEntrada = LocalDateTime.now();
+private MenuOpciones menu;
+
+    public RegistroEntrada(MenuOpciones menu) {
+        initComponents();
+        this.menu = menu;
+    LocalDateTime horaEntrada = LocalDateTime.now();
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    txtHoraEntrada.setText(horaEntrada.format(formato));
+    txtAtributoExtra1.setVisible(false);
+    txtAtributoExtra2.setVisible(false);
+    setLocationRelativeTo(null);
+    cmbTiposDeBici.setVisible(false);
+    txtHoraEntrada.setEditable(false);
+    }
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        lblRegistroDeEntrada = new javax.swing.JLabel();
+        btnRegistrar = new javax.swing.JButton();
+        lblMarca = new javax.swing.JLabel();
+        lblPlaca = new javax.swing.JLabel();
+        txtPlaca = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
+        cmdOpcionVehiculos = new javax.swing.JComboBox<>();
+        lblPlaca1 = new javax.swing.JLabel();
+        lblAtributosVehiculoExtra1 = new javax.swing.JLabel();
+        txtAtributoExtra1 = new javax.swing.JTextField();
+        txtAtributoExtra2 = new javax.swing.JTextField();
+        lblAtributosVehiculoExtra2 = new javax.swing.JLabel();
+        lblHoraEntrada = new javax.swing.JLabel();
+        txtHoraEntrada = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
+        cmbTiposDeBici = new javax.swing.JComboBox<>();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        lblRegistroDeEntrada.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblRegistroDeEntrada.setText("Registro de entrada");
+
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        lblMarca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblMarca.setText("Marca:");
+
+        lblPlaca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPlaca.setText("Placa:");
+
+        txtPlaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPlacaActionPerformed(evt);
+            }
+        });
+
+        cmdOpcionVehiculos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tipo....", "Bicicleta", "Carro", "Motocicleta", "Camion", " " }));
+        cmdOpcionVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdOpcionVehiculosActionPerformed(evt);
+            }
+        });
+
+        lblPlaca1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPlaca1.setText("Opcion del vehiculo:");
+
+        lblAtributosVehiculoExtra1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        txtAtributoExtra1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAtributoExtra1ActionPerformed(evt);
+            }
+        });
+
+        txtAtributoExtra2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAtributoExtra2ActionPerformed(evt);
+            }
+        });
+
+        lblAtributosVehiculoExtra2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        lblHoraEntrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblHoraEntrada.setText("Hora de entrada: ");
+
+        txtHoraEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoraEntradaActionPerformed(evt);
+            }
+        });
+
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
+        cmbTiposDeBici.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir", "Montaña", "Ruta", "BiciMoto", "Urbuna", "Híbrida", "BMX", " " }));
+        cmbTiposDeBici.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTiposDeBiciActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblRegistroDeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(143, 143, 143))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblHoraEntrada)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtHoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(151, 151, 151))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(lblAtributosVehiculoExtra1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtAtributoExtra1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lblPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtPlaca))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lblMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPlaca1)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbTiposDeBici, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(lblRegistroDeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlaca1)
+                    .addComponent(cmdOpcionVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMarca, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlaca)
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHoraEntrada)
+                    .addComponent(txtHoraEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(lblAtributosVehiculoExtra1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAtributoExtra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAtributosVehiculoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTiposDeBici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAtributoExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar)
+                    .addComponent(btnRegresar))
+                .addGap(31, 31, 31))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+   /* Este metodo es el boton Registrar convalida que los datos solicitados sea agregados
+      ademas 
+        */
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        String tipo = (String) cmdOpcionVehiculos.getSelectedItem();
+//        cmdOpcionVehiculos.getSelectedItem()
+        String tipoBici = (String) cmbTiposDeBici.getSelectedItem();
+        String tieneSidecar;
+        String marca = txtMarca.getText(); 
+        String Placa = txtPlaca.getText().trim().toLowerCase();
+        if (Placa.isBlank() || marca.isBlank() || tipo.equals("Seleccione el tipo....")) {
+            JOptionPane.showMessageDialog(this, "Por favor, rellena todos los campos"); return; }
+             if (Placa.length() != 6) { JOptionPane.showMessageDialog(this, "La placa debe tener exactamente 6 caracteres"); return;}
+        // Se almacenan 
+        boolean registroExitoso = false;
+        try {
+              switch (tipo) {
+            case "Carro" -> { try { int numeroDePuertas = Integer.parseInt(txtAtributoExtra1.getText());
+                if (numeroDePuertas < 2 || numeroDePuertas > 5 ) { JOptionPane.showMessageDialog(this, "El munero de puertas debe estar entre 2 y 5:"); return;}
+                 MenuOpciones.registrarVehiculo.add(new Carro(marca ,Placa , tipo,horaEntrada ,null ,numeroDePuertas)) ;
+                           } catch (NumberFormatException e) { JOptionPane.showMessageDialog(this, "Numero de Puertas Invalido");}}
+            case "Bicicleta" -> { 
+                    if (tipoBici.equals("Elegir")) {
+                        {JOptionPane.showMessageDialog(this, "Elegir un tipo de Bicicleta");} return; }
+                    try {
+                     int cambios = Integer.parseInt(txtAtributoExtra1.getText());
+                     MenuOpciones.registrarVehiculo.add(new Bicicleta(marca ,Placa ,tipo ,horaEntrada,null ,cambios,tipoBici )); 
+                } catch (NumberFormatException e) {JOptionPane.showMessageDialog(this, "Numero de cambios inválido.");}}
+            case "Motocicleta" -> {
+                       int cilindrada = Integer.parseInt(txtAtributoExtra2.getText());
+                        do {
+                            tieneSidecar = txtAtributoExtra1.getText();
+                } while (!tieneSidecar.equalsIgnoreCase("Si") && !tieneSidecar.equalsIgnoreCase("No"));
+                        Boolean sidecar = tieneSidecar.equalsIgnoreCase("Si")? true : false;    
+                        MenuOpciones.registrarVehiculo.add(new Moto(marca, Placa,tipo, horaEntrada, null,cilindrada, sidecar));
+                 }
+            case "Camion" -> { int ejes = Integer.parseInt(txtAtributoExtra1.getText());
+                MenuOpciones.registrarVehiculo.add(new Camion(marca, Placa, tipo, horaEntrada, null,ejes)); 
+             } } registroExitoso= true;
+        } catch (NumberFormatException e) {JOptionPane.showConfirmDialog(this, "Error en el formato"); return; }
+         // Mensaje al usuario despues de registrar correctamente
+        if (registroExitoso) {
+             JOptionPane.showMessageDialog(this,"Vehiculo registrado correctamente.");
+        }
+           limpiarCasillas();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
+    }//GEN-LAST:event_txtPlacaActionPerformed
+
+    private void cmdOpcionVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOpcionVehiculosActionPerformed
+    String tipo = (String) cmdOpcionVehiculos.getSelectedItem(); 
+        switch (tipo) {
+            // Solicita los Atributos especiales segun el Vehiculo
+            case "Seleccione el tipo...." -> {
+                          lblAtributosVehiculoExtra1.setVisible(false);
+                          txtAtributoExtra1.setVisible(false);
+                          lblAtributosVehiculoExtra2.setVisible(false);
+                          txtAtributoExtra2.setVisible(false);
+                          cmbTiposDeBici.setVisible(false);
+            }
+            case "Carro" -> { lblAtributosVehiculoExtra1.setText("Numero de Puertas:");
+                          txtAtributoExtra1.getText(); 
+                          lblAtributosVehiculoExtra1.setVisible(true);
+                          txtAtributoExtra1.setVisible(true);
+                          lblAtributosVehiculoExtra2.setVisible(false);
+                          txtAtributoExtra2.setVisible(false);
+                          cmbTiposDeBici.setVisible(false);
+            }
+            case "Bicicleta" -> {lblAtributosVehiculoExtra1.setText("Cambios: ");
+                            txtAtributoExtra1.getText();
+                            lblAtributosVehiculoExtra2.setText("Tipo: ");
+                            txtAtributoExtra2.getText();
+                            lblAtributosVehiculoExtra1.setVisible(true);
+                            txtAtributoExtra1.setVisible(true);
+                            lblAtributosVehiculoExtra2.setVisible(true);
+                            txtAtributoExtra2.setVisible(false);
+                            cmbTiposDeBici.setVisible(true);
+            }
+            case "Motocicleta" -> {lblAtributosVehiculoExtra1.setText("tiene Sidecar (SI/NO): ");
+                            txtAtributoExtra1.getText();
+                            lblAtributosVehiculoExtra2.setText("Cilindraje: ");
+                            txtAtributoExtra2.getText();
+                            lblAtributosVehiculoExtra1.setVisible(true);
+                            txtAtributoExtra1.setVisible(true);
+                            lblAtributosVehiculoExtra2.setVisible(true);
+                            txtAtributoExtra2.setVisible(true);
+                            cmbTiposDeBici.setVisible(false);
+            }
+            case "Camion" -> {lblAtributosVehiculoExtra1.setText("numero de ejes:");
+                            txtAtributoExtra1.getText(); 
+                            lblAtributosVehiculoExtra1.setVisible(true);
+                            txtAtributoExtra1.setVisible(true);
+                            lblAtributosVehiculoExtra2.setVisible(false); 
+                            txtAtributoExtra2.setVisible(false);
+                            cmbTiposDeBici.setVisible(false);
+            }
+            default -> {lblAtributosVehiculoExtra1.setText("");
+                     lblAtributosVehiculoExtra2.setText(""); 
+                      cmbTiposDeBici.setVisible(false);
+}}
+    }//GEN-LAST:event_cmdOpcionVehiculosActionPerformed
+
+    private void txtAtributoExtra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtributoExtra1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAtributoExtra1ActionPerformed
+
+    private void txtAtributoExtra2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtributoExtra2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAtributoExtra2ActionPerformed
+
+    private void txtHoraEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHoraEntradaActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void cmbTiposDeBiciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTiposDeBiciActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTiposDeBiciActionPerformed
+    // Limpiar y restablecer cada casilla, atributos generales y especificos
+    public void limpiarCasillas(){
+    txtMarca.setText("");
+    txtPlaca.setText("");
+    LocalDateTime horaEntrada = LocalDateTime.now();
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    txtHoraEntrada.setText(horaEntrada.format(formato));
+    txtAtributoExtra1.setText("");
+    txtAtributoExtra2.setText("");
+    cmbTiposDeBici.setSelectedItem("Elegir");
+    cmdOpcionVehiculos.setSelectedItem("Seleccione el tipo....");
+   
+    }//fin deL metodo que limpia las casillas
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+      
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(RegistroEntrada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(RegistroEntrada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(RegistroEntrada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(RegistroEntrada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MenuOpciones().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRegresar;
+    private javax.swing.JComboBox<String> cmbTiposDeBici;
+    private javax.swing.JComboBox<String> cmdOpcionVehiculos;
+    private javax.swing.JLabel lblAtributosVehiculoExtra1;
+    private javax.swing.JLabel lblAtributosVehiculoExtra2;
+    private javax.swing.JLabel lblHoraEntrada;
+    private javax.swing.JLabel lblMarca;
+    private javax.swing.JLabel lblPlaca;
+    private javax.swing.JLabel lblPlaca1;
+    private javax.swing.JLabel lblRegistroDeEntrada;
+    private javax.swing.JTextField txtAtributoExtra1;
+    private javax.swing.JTextField txtAtributoExtra2;
+    private javax.swing.JTextField txtHoraEntrada;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtPlaca;
+    // End of variables declaration//GEN-END:variables
+}
