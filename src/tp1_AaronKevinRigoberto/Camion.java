@@ -7,7 +7,7 @@ package tp1_AaronKevinRigoberto;
 import java.time.LocalDateTime;
 
 public class Camion extends Vehiculo {
-    private final int ejes;
+    protected final int ejes;
     public Camion(String marca, String placa,String tipo, LocalDateTime horaEntrada,LocalDateTime horaSalida, int ejes) {
         super(marca, placa,"Camion", horaEntrada, horaSalida);
         this.ejes = ejes;
